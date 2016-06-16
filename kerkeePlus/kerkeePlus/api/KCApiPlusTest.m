@@ -13,7 +13,7 @@
 #import "KCBaseDefine.h"
 #import "KCJSBridge.h"
 
-@implementation KCApiSDKTest
+@implementation KCApiPlusTest
 
 +(void)testInfo:(KCWebView*)aWebView argList:(KCArgList*)args
 {

@@ -12,7 +12,7 @@
 #import "KCWebView.h"
 #import "KCArgList.h"
 
-@interface KCApiSDKTest : NSObject
+@interface KCApiPlusTest : NSObject
 
 +(void)testInfo:(KCWebView*)aWebView argList:(KCArgList*)args;
 

@@ -12,6 +12,7 @@
 		DF046CBD1CDC4E96003CA85C /* kerkeePlusTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DF046CBC1CDC4E96003CA85C /* kerkeePlusTests.m */; };
 		DF046CE81CDC817B003CA85C /* KCApiPlusTest.h in Headers */ = {isa = PBXBuildFile; fileRef = DF046CE61CDC817B003CA85C /* KCApiPlusTest.h */; };
 		DF046CE91CDC817B003CA85C /* KCApiPlusTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DF046CE71CDC817B003CA85C /* KCApiPlusTest.m */; };
+		DF095F0A1D126E4E002FD240 /* kerkee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF095EC01D125B35002FD240 /* kerkee.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,13 @@
 			remoteGlobalIDString = DF3075101B959B01005AA030;
 			remoteInfo = kerkeeTests;
 		};
+		DF095F081D126E42002FD240 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DF095EBA1D125B35002FD240 /* kerkee.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = DF3075041B959B01005AA030;
+			remoteInfo = kerkee;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF095F0A1D126E4E002FD240 /* kerkee.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,6 +161,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				DF095F091D126E42002FD240 /* PBXTargetDependency */,
 			);
 			name = kerkeePlus;
 			productName = kerkeeSDK;
@@ -275,6 +285,11 @@
 			isa = PBXTargetDependency;
 			target = DF046CAC1CDC4E96003CA85C /* kerkeePlus */;
 			targetProxy = DF046CB91CDC4E96003CA85C /* PBXContainerItemProxy */;
+		};
+		DF095F091D126E42002FD240 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = kerkee;
+			targetProxy = DF095F081D126E42002FD240 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
