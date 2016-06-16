@@ -14,6 +14,7 @@
 		DF046CE91CDC817B003CA85C /* KCApiPlusTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DF046CE71CDC817B003CA85C /* KCApiPlusTest.m */; };
 		DF095F5D1D127CAF002FD240 /* kerdb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF095F4E1D127C78002FD240 /* kerdb.framework */; };
 		DF095F5E1D127CAF002FD240 /* kerkee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF095F561D127C87002FD240 /* kerkee.framework */; };
+		DF095FA61D129B6D002FD240 /* kerkeePlus.h in Resources */ = {isa = PBXBuildFile; fileRef = DF046CB01CDC4E96003CA85C /* kerkeePlus.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -302,6 +303,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF095FA61D129B6D002FD240 /* kerkeePlus.h in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
