@@ -1,3 +1,6 @@
 [submodule "kerkee"]
 	path = kerkee
 	url = https://zihong@github.com/kercer/kerkee_ios.git
+[submodule "kerdb"]
+	path = kerdb
+	url = https://github.com/kercer/kerdb.git
