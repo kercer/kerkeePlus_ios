@@ -44,6 +44,20 @@
 			remoteGlobalIDString = DF3075041B959B01005AA030;
 			remoteInfo = kerkee;
 		};
+		DF095F221D12783A002FD240 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DF095F1D1D12783A002FD240 /* kerdb.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9295C9951B2591EA00C388EB;
+			remoteInfo = kerdb;
+		};
+		DF095F241D12783A002FD240 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DF095F1D1D12783A002FD240 /* kerdb.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 921682821B25C1A300561211;
+			remoteInfo = "kerdb-ios-tests";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +70,7 @@
 		DF046CE61CDC817B003CA85C /* KCApiPlusTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCApiPlusTest.h; sourceTree = "<group>"; };
 		DF046CE71CDC817B003CA85C /* KCApiPlusTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCApiPlusTest.m; sourceTree = "<group>"; };
 		DF095EBA1D125B35002FD240 /* kerkee.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = kerkee.xcodeproj; path = ../kerkee/kerkee/kerkee.xcodeproj; sourceTree = "<group>"; };
+		DF095F1D1D12783A002FD240 /* kerdb.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = kerdb.xcodeproj; path = ../kerdb/kerdb/kerdb.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +96,7 @@
 		DF046CA31CDC4E96003CA85C = {
 			isa = PBXGroup;
 			children = (
+				DF095F1D1D12783A002FD240 /* kerdb.xcodeproj */,
 				DF095EBA1D125B35002FD240 /* kerkee.xcodeproj */,
 				DF046CAF1CDC4E96003CA85C /* kerkeePlus */,
 				DF046CBB1CDC4E96003CA85C /* kerkeePlusTests */,
@@ -130,6 +146,15 @@
 			children = (
 				DF095EC01D125B35002FD240 /* kerkee.framework */,
 				DF095EC21D125B35002FD240 /* kerkeeTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DF095F1E1D12783A002FD240 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DF095F231D12783A002FD240 /* kerdb.framework */,
+				DF095F251D12783A002FD240 /* kerdb.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -215,6 +240,10 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = DF095F1E1D12783A002FD240 /* Products */;
+					ProjectRef = DF095F1D1D12783A002FD240 /* kerdb.xcodeproj */;
+				},
+				{
 					ProductGroup = DF095EBB1D125B35002FD240 /* Products */;
 					ProjectRef = DF095EBA1D125B35002FD240 /* kerkee.xcodeproj */;
 				},
@@ -240,6 +269,20 @@
 			fileType = wrapper.cfbundle;
 			path = kerkeeTests.xctest;
 			remoteRef = DF095EC11D125B35002FD240 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		DF095F231D12783A002FD240 /* kerdb.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = kerdb.framework;
+			remoteRef = DF095F221D12783A002FD240 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		DF095F251D12783A002FD240 /* kerdb.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = kerdb.xctest;
+			remoteRef = DF095F241D12783A002FD240 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
