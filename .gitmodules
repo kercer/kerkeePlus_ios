@@ -1,0 +1,3 @@
+[submodule "kerkee"]
+	path = kerkee
+	url = https://zihong@github.com/kercer/kerkee_ios.git
