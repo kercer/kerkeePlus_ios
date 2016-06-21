@@ -18,6 +18,7 @@
 #import "KCUriDispatcher.h"
 #import "KCFetchManifest.h"
 #import "KCJSCompileExecutor.h"
+#import "KCFile.h"
 
 
 @interface ViewController ()
@@ -51,6 +52,8 @@
 //    //test uri
 //    KCURIComponents *components = [KCURIComponents componentsWithURL:[NSURL URLWithString:@"scheme://user:password@host:0/path?query=1&q=2#fragment"]
 //                                             resolvingAgainstBaseURL:NO];
+    
+    KCFile* file = [[KCFile alloc] initWithPath:nil name:nil];
 
     
 
