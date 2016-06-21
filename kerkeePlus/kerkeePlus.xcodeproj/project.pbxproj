@@ -15,6 +15,8 @@
 		DF095F5D1D127CAF002FD240 /* kerdb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF095F4E1D127C78002FD240 /* kerdb.framework */; };
 		DF095F5E1D127CAF002FD240 /* kerkee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF095F561D127C87002FD240 /* kerkee.framework */; };
 		DF095FA61D129B6D002FD240 /* kerkeePlus.h in Resources */ = {isa = PBXBuildFile; fileRef = DF046CB01CDC4E96003CA85C /* kerkeePlus.h */; };
+		DF533A181D195784005F0729 /* KCDeployError.h in Headers */ = {isa = PBXBuildFile; fileRef = DF533A161D195784005F0729 /* KCDeployError.h */; };
+		DF533A191D195784005F0729 /* KCDeployError.m in Sources */ = {isa = PBXBuildFile; fileRef = DF533A171D195784005F0729 /* KCDeployError.m */; };
 		DF69A5621D13D7040049C628 /* KCDek.h in Headers */ = {isa = PBXBuildFile; fileRef = DF69A5601D13D7040049C628 /* KCDek.h */; };
 		DF69A5631D13D7040049C628 /* KCDek.m in Sources */ = {isa = PBXBuildFile; fileRef = DF69A5611D13D7040049C628 /* KCDek.m */; };
 		DF69A5661D13D80F0049C628 /* KCWebApp.h in Headers */ = {isa = PBXBuildFile; fileRef = DF69A5641D13D80F0049C628 /* KCWebApp.h */; };
@@ -96,6 +98,8 @@
 		DF046CE71CDC817B003CA85C /* KCApiPlusTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCApiPlusTest.m; sourceTree = "<group>"; };
 		DF095EBA1D125B35002FD240 /* kerkee.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = kerkee.xcodeproj; path = kerkee/kerkee/kerkee.xcodeproj; sourceTree = "<group>"; };
 		DF095F1D1D12783A002FD240 /* kerdb.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = kerdb.xcodeproj; path = kerdb/kerdb/kerdb.xcodeproj; sourceTree = "<group>"; };
+		DF533A161D195784005F0729 /* KCDeployError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCDeployError.h; sourceTree = "<group>"; };
+		DF533A171D195784005F0729 /* KCDeployError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCDeployError.m; sourceTree = "<group>"; };
 		DF69A5601D13D7040049C628 /* KCDek.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCDek.h; sourceTree = "<group>"; };
 		DF69A5611D13D7040049C628 /* KCDek.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCDek.m; sourceTree = "<group>"; };
 		DF69A5641D13D80F0049C628 /* KCWebApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCWebApp.h; sourceTree = "<group>"; };
@@ -213,6 +217,8 @@
 				DF69A56C1D13D91F0049C628 /* KCDeployAssert.h */,
 				DF69A56D1D13D91F0049C628 /* KCDeployAssert.m */,
 				DF69A5701D13D9400049C628 /* KCDeployFlow.h */,
+				DF533A161D195784005F0729 /* KCDeployError.h */,
+				DF533A171D195784005F0729 /* KCDeployError.m */,
 				DF69A5711D13D9400049C628 /* KCDeployFlow.m */,
 				DF69A5741D13D95D0049C628 /* KCDeployFlowDefault.h */,
 				DF69A5751D13D95D0049C628 /* KCDeployFlowDefault.m */,
@@ -240,6 +246,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF533A181D195784005F0729 /* KCDeployError.h in Headers */,
 				DF69A5621D13D7040049C628 /* KCDek.h in Headers */,
 				DF69A57E1D13D99B0049C628 /* KCWebAppManager.h in Headers */,
 				DF69A5661D13D80F0049C628 /* KCWebApp.h in Headers */,
@@ -396,6 +403,7 @@
 				DF69A56B1D13D9060049C628 /* KCDeploy.m in Sources */,
 				DF69A57F1D13D99B0049C628 /* KCWebAppManager.m in Sources */,
 				DF69A5631D13D7040049C628 /* KCDek.m in Sources */,
+				DF533A191D195784005F0729 /* KCDeployError.m in Sources */,
 				DF69A5731D13D9400049C628 /* KCDeployFlow.m in Sources */,
 				DF69A5671D13D80F0049C628 /* KCWebApp.m in Sources */,
 				DF69A56F1D13D91F0049C628 /* KCDeployAssert.m in Sources */,

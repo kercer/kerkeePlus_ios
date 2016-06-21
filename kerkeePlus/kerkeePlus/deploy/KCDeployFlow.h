@@ -7,7 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <KCFile.h>
+#import "KCDek.h"
+#import "KCDeployError.h"
 
-@interface KCDeployFlow : NSObject
+
+@protocol KCDeployFlow <NSObject>
+
+- (KCFile*) decodeFile:(KCFile*)aSrcFile dek:(KCDek*)aDek;
+- (void)onComplete:(KCDek*)aDek;
+- (void)onDeployError:(KCDeployError*)aError dek:(KCDek*)aDek;
 
 @end
