@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "KCDeployFlow.h"
 
 @interface KCDeploy : NSObject
 
+
+@property (nonatomic, assign) id<KCDeployFlow> mDeployFlow;
 @end

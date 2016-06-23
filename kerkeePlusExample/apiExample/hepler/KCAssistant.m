@@ -9,9 +9,10 @@
 #import "KCAssistant.h"
 #import "KCWebView.h"
 #import "KCWebPathDefine.h"
-#import "ZipArchive.h"
+//#import "ZipArchive.h"
 #import "KCBaseDefine.h"
 #import "KCFileManager.h"
+#import <kerzip/KCZip.h>
 
 @interface KCAssistant()
 {
@@ -83,17 +84,18 @@
         return;
     }
     
-    ZipArchive *zipArchive = [[ZipArchive alloc] init];
-    zipArchive.delegate = (id)self;
+    [KCZip unzip:zipPath to:KCWebPath_HtmlLocalPath];
+//    ZipArchive *zipArchive = [[ZipArchive alloc] init];
+//    zipArchive.delegate = (id)self;
+//    
+//    if ([zipArchive UnzipOpenFile:zipPath]) {
+//        if([zipArchive UnzipFileTo:KCWebPath_HtmlLocalPath overWrite:YES]){
+//            [zipArchive UnzipCloseFile];
+//            [[NSFileManager defaultManager] removeItemAtPath:KCWebPath_HtmlRootPath_ZipFile error:nil];
+//        }
+//    }
     
-    if ([zipArchive UnzipOpenFile:zipPath]) {
-        if([zipArchive UnzipFileTo:KCWebPath_HtmlLocalPath overWrite:YES]){
-            [zipArchive UnzipCloseFile];
-            [[NSFileManager defaultManager] removeItemAtPath:KCWebPath_HtmlRootPath_ZipFile error:nil];
-        }
-    }
-    
-    KCRelease(zipArchive);
+//    KCRelease(zipArchive);
     
     [KCFileManager addSkipBackupAttributeToItemAtURL:[NSURL URLWithString:KCWebPath_HtmlRootPath]];
 }

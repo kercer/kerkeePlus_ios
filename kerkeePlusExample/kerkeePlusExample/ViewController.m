@@ -19,6 +19,9 @@
 #import "KCFetchManifest.h"
 #import "KCJSCompileExecutor.h"
 #import "KCFile.h"
+#import "KCFileManager.h"
+#import "KCString.h"
+#import "KCLog.h"
 
 
 @interface ViewController ()
@@ -52,9 +55,6 @@
 //    //test uri
 //    KCURIComponents *components = [KCURIComponents componentsWithURL:[NSURL URLWithString:@"scheme://user:password@host:0/path?query=1&q=2#fragment"]
 //                                             resolvingAgainstBaseURL:NO];
-    
-    KCFile* file = [[KCFile alloc] initWithPath:nil name:nil];
-
     
 
 //    NSString* pathTestHtml = [[NSBundle mainBundle] pathForResource:@"test.html" ofType:Nil];

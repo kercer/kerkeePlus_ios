@@ -33,6 +33,7 @@
 		DF69A57B1D13D9730049C628 /* KCDeployInstall.m in Sources */ = {isa = PBXBuildFile; fileRef = DF69A5791D13D9730049C628 /* KCDeployInstall.m */; };
 		DF69A57E1D13D99B0049C628 /* KCWebAppManager.h in Headers */ = {isa = PBXBuildFile; fileRef = DF69A57C1D13D99B0049C628 /* KCWebAppManager.h */; };
 		DF69A57F1D13D99B0049C628 /* KCWebAppManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DF69A57D1D13D99B0049C628 /* KCWebAppManager.m */; };
+		DFE290331D1BB1F9005F0F52 /* kerzip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFE28F961D1BAEF5005F0F52 /* kerzip.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,27 @@
 			remoteGlobalIDString = DF3075041B959B01005AA030;
 			remoteInfo = kerkee;
 		};
+		DFE28F951D1BAEF5005F0F52 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DFE28F8F1D1BAEF5005F0F52 /* kerzip.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B423AE1A1C0DF76A0004A2F1;
+			remoteInfo = kerzip;
+		};
+		DFE2902A1D1BB15F005F0F52 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DFE28F8F1D1BAEF5005F0F52 /* kerzip.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DFE28FB61D1BAFE2005F0F52;
+			remoteInfo = kerzipTests;
+		};
+		DFE290311D1BB1EC005F0F52 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DFE28F8F1D1BAEF5005F0F52 /* kerzip.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = DFE28FAB1D1BAFE2005F0F52;
+			remoteInfo = kerzip;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -116,6 +138,7 @@
 		DF69A5791D13D9730049C628 /* KCDeployInstall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCDeployInstall.m; sourceTree = "<group>"; };
 		DF69A57C1D13D99B0049C628 /* KCWebAppManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCWebAppManager.h; sourceTree = "<group>"; };
 		DF69A57D1D13D99B0049C628 /* KCWebAppManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCWebAppManager.m; sourceTree = "<group>"; };
+		DFE28F8F1D1BAEF5005F0F52 /* kerzip.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = kerzip.xcodeproj; path = kerzip/kerzip.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +146,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DFE290331D1BB1F9005F0F52 /* kerzip.framework in Frameworks */,
 				DF095F5D1D127CAF002FD240 /* kerdb.framework in Frameworks */,
 				DF095F5E1D127CAF002FD240 /* kerkee.framework in Frameworks */,
 			);
@@ -142,6 +166,7 @@
 		DF046CA31CDC4E96003CA85C = {
 			isa = PBXGroup;
 			children = (
+				DFE28F8F1D1BAEF5005F0F52 /* kerzip.xcodeproj */,
 				DF095F1D1D12783A002FD240 /* kerdb.xcodeproj */,
 				DF095EBA1D125B35002FD240 /* kerkee.xcodeproj */,
 				DF046CAF1CDC4E96003CA85C /* kerkeePlus */,
@@ -216,9 +241,9 @@
 				DF69A5691D13D9060049C628 /* KCDeploy.m */,
 				DF69A56C1D13D91F0049C628 /* KCDeployAssert.h */,
 				DF69A56D1D13D91F0049C628 /* KCDeployAssert.m */,
-				DF69A5701D13D9400049C628 /* KCDeployFlow.h */,
 				DF533A161D195784005F0729 /* KCDeployError.h */,
 				DF533A171D195784005F0729 /* KCDeployError.m */,
+				DF69A5701D13D9400049C628 /* KCDeployFlow.h */,
 				DF69A5711D13D9400049C628 /* KCDeployFlow.m */,
 				DF69A5741D13D95D0049C628 /* KCDeployFlowDefault.h */,
 				DF69A5751D13D95D0049C628 /* KCDeployFlowDefault.m */,
@@ -237,6 +262,15 @@
 			children = (
 			);
 			path = util;
+			sourceTree = "<group>";
+		};
+		DFE28F901D1BAEF5005F0F52 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DFE28F961D1BAEF5005F0F52 /* kerzip.framework */,
+				DFE2902B1D1BB15F005F0F52 /* kerzipTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -275,6 +309,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				DFE290321D1BB1EC005F0F52 /* PBXTargetDependency */,
 				DF095F5A1D127CA9002FD240 /* PBXTargetDependency */,
 				DF095F5C1D127CA9002FD240 /* PBXTargetDependency */,
 			);
@@ -337,6 +372,10 @@
 					ProductGroup = DF095F511D127C87002FD240 /* Products */;
 					ProjectRef = DF095EBA1D125B35002FD240 /* kerkee.xcodeproj */;
 				},
+				{
+					ProductGroup = DFE28F901D1BAEF5005F0F52 /* Products */;
+					ProjectRef = DFE28F8F1D1BAEF5005F0F52 /* kerzip.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -373,6 +412,20 @@
 			fileType = wrapper.cfbundle;
 			path = kerkeeTests.xctest;
 			remoteRef = DF095F571D127C87002FD240 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		DFE28F961D1BAEF5005F0F52 /* kerzip.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = kerzip.framework;
+			remoteRef = DFE28F951D1BAEF5005F0F52 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		DFE2902B1D1BB15F005F0F52 /* kerzipTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = kerzipTests.xctest;
+			remoteRef = DFE2902A1D1BB15F005F0F52 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -438,6 +491,11 @@
 			isa = PBXTargetDependency;
 			name = kerkee;
 			targetProxy = DF095F5B1D127CA9002FD240 /* PBXContainerItemProxy */;
+		};
+		DFE290321D1BB1EC005F0F52 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = kerzip;
+			targetProxy = DFE290311D1BB1EC005F0F52 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
