@@ -12,9 +12,7 @@
 #import <KCFile.h>
 
 /**
- When a download fails because of an HTTP error, the HTTP status code is transmitted as an `NSNumber` via the provided `NSError` parameter of the corresponding block or delegate method. Access to `error.userInfos[KCDownloadErrorHTTPStatusKey]`
- 
- @see -onDownload:didError:
+ When a download fails because of an HTTP error, the HTTP status code is transmitted as an `NSNumber` via the provided `NSError` parameter of the corresponding block or delegate method. Access to `error.userInfo[KCDownloadErrorHTTPStatusKey]`
  */
 extern NSString * const KCDownloadErrorHTTPStatusKey;
 

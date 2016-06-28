@@ -289,10 +289,10 @@ didReceiveResponse:(NSURLResponse *)response
     [m_receivedDataBuffer appendData:data];
     m_receivedDataLength += [data length];
     
-    KCLog(@"%@ | %.2f%% - Received: %ld - Total: %ld",
-          m_filePath.getPath,
-          (float) m_receivedDataLength / m_expectedDataLength * 100,
-          (long) m_receivedDataLength, (long) m_expectedDataLength);
+//    KCLog(@"%@ | %.2f%% - Received: %ld - Total: %ld",
+//          m_filePath.getPath,
+//          (float) m_receivedDataLength / m_expectedDataLength * 100,
+//          (long) m_receivedDataLength, (long) m_expectedDataLength);
     
     if (m_receivedDataBuffer.length > kBufferSize && [self isExecuting])
     {
@@ -450,6 +450,8 @@ didReceiveResponse:(NSURLResponse *)response
     m_previousTotal = m_receivedDataLength;
     // Compute the speed rate on the average of the last seconds samples
     self.speedRate = [[m_samplesOfDownloadedBytes valueForKeyPath:@"@avg.longValue"] longValue];
+    
+//    NSLog(@"speedRate:%d", self.speedRate);
 }
 
 - (BOOL)removeFileWithError:(NSError *__autoreleasing *)error
