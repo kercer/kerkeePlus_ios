@@ -7,7 +7,22 @@
 //
 
 #import "KCDeployFlowDefault.h"
+#import <KCFile.h>
 
 @implementation KCDeployFlowDefault
+
+- (KCFile*)decodeFile:(KCFile*)aSrcFile dek:(KCDek*)aDek
+{
+//    KCFile* dirPath = [aSrcFile getParentFile];
+    return aSrcFile;
+}
+- (void)onComplete:(KCDek*)aDek
+{
+    
+}
+- (void)onDeployError:(KCDeployError*)aError dek:(KCDek*)aDek
+{
+    
+}
 
 @end

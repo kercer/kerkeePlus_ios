@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "KCDeploy.h"
 
 @interface KCDeployInstall : NSObject
+
+- (instancetype)initWithDeploy:(KCDeploy*)aDeploy;
 
 @end

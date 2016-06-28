@@ -11,8 +11,6 @@
 #import <KCBaseDefine.h>
 
 
-#define kDefaultManifestName @"cache.manifest"
-
 @interface KCDek ()
 {
     NSString* m_manifestFileName;

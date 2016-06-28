@@ -22,6 +22,7 @@
 #import "KCFileManager.h"
 #import "KCString.h"
 #import "KCLog.h"
+#import "kerkeePlus/KCDownloadEngine.h"
 
 
 @interface ViewController ()
@@ -55,6 +56,23 @@
 //    //test uri
 //    KCURIComponents *components = [KCURIComponents componentsWithURL:[NSURL URLWithString:@"scheme://user:password@host:0/path?query=1&q=2#fragment"]
 //                                             resolvingAgainstBaseURL:NO];
+    
+    KCFile* file = [[KCFile alloc] initWithPath:nil name:nil];
+    NSString* path = [KCFileManager pathForDocumentsDirectory];
+    KCFile* file2 = [[KCFile alloc] initWithPath:path name:@"b/c/d/f/g.gif"];
+    KCURI* u = file2.toURI;
+    BOOL s = [file2 mkdirs];
+    BOOL d=[file2 remove];
+    
+    KC_PRINT_RUNTIME_BEGIN
+    
+    NSString* a = @"";
+    NSString* b = [a replaceChar:'&' withChar:'#'];
+    int c = 1;
+    
+    KC_PRINT_RUNTIME_COMMIT
+    
+    [[KCDownloadEngine defaultDownloadEngine] startDownloadWithURL:[NSURL URLWithString:@"http://www.linzihong.com/test/update/html.dek"] toPath:nil delegate:nil];
     
 
 //    NSString* pathTestHtml = [[NSBundle mainBundle] pathForResource:@"test.html" ofType:Nil];

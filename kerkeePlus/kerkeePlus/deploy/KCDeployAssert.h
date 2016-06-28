@@ -7,7 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "KCDeploy.h"
 
 @interface KCDeployAssert : NSObject
+
+//default asset file name is "html.dek";
+@property (nonatomic, copy) NSString* mAssetFileName;
+
+- (instancetype)initWithDeploy:(KCDeploy*)aDeploy;
+- (BOOL)deployFromAssert;
 
 @end

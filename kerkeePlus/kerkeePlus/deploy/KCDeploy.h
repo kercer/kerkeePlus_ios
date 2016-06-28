@@ -11,6 +11,11 @@
 
 @interface KCDeploy : NSObject
 
+- (id)initWithDeployFlow:(id<KCDeployFlow>)aDeployFlow;
+- (NSString*)getRootPath;
+- (NSString*)getResRootPath;
+
+- (BOOL)deploy:(KCFile*)aSrcFile dek:(KCDek*)aDek;
 
 @property (nonatomic, assign) id<KCDeployFlow> mDeployFlow;
 @end

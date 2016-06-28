@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "KCDeployFlow.h"
 
-@interface KCDeployFlowDefault : NSObject
+@interface KCDeployFlowDefault : NSObject<KCDeployFlow>
 
 @end

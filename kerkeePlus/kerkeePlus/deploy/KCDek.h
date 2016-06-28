@@ -11,6 +11,8 @@
 #import <KCManifestObject.h>
 #import "KCWebApp.h"
 
+#define kDefaultManifestName @"cache.manifest"
+
 @interface KCDek : NSObject
 
 - (id)initWithRootPath:(KCFile*)aRootPath;
