@@ -72,7 +72,9 @@
     
     KC_PRINT_RUNTIME_COMMIT
     
-    [[KCDownloadEngine defaultDownloadEngine] startDownloadWithURL:[NSURL URLWithString:@"http://www.linzihong.com/test/update/html.dek"] toPath:nil delegate:nil];
+    NSString* urlDownload = @"http://gdown.baidu.com/data/wisegame/4f9b25fb0e093ac6/QQ_220.apk";
+//    NSString* urlDownload = @"http://www.linzihong.com/test/update/html.dek"
+    [[KCDownloadEngine defaultDownloadEngine] startDownloadWithURL:[NSURL URLWithString:urlDownload] toPath:nil delegate:nil];
     
 
 //    NSString* pathTestHtml = [[NSBundle mainBundle] pathForResource:@"test.html" ofType:Nil];

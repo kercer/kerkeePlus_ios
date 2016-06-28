@@ -79,6 +79,8 @@ typedef NS_ENUM(NSUInteger, KCDownloadState) {
  */
 @property (nonatomic, strong, readonly) NSMutableURLRequest *fileRequest;
 
+@property (nonatomic, assign, readonly) unsigned long long totalLength;
+
 /**
  The current speed of the download in bits/sec. This property updates itself regularly so you can retrieve it on a regular interval to update your UI.
  */

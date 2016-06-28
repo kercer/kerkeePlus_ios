@@ -17,11 +17,11 @@ static const NSInteger kNumberOfSamples = 5;
 NSString * const KCDownloadErrorDomain = @"com.kercer.download";
 NSString * const KCDownloadErrorHTTPStatusKey = @"KCDownloadErrorHTTPStatusKey";
 
-@interface KCDownloader ()
+@interface KCDownloader () <NSURLSessionDelegate>
 {
     //download
     NSMutableData* m_receivedDataBuffer;
-    NSURLConnection* m_connection;
+    NSURLSession* m_connection;
     NSFileHandle* m_fileHandle;
     
     KCFile* m_filePath;
@@ -50,9 +50,9 @@ NSString * const KCDownloadErrorHTTPStatusKey = @"KCDownloadErrorHTTPStatusKey";
 @end
 
 @implementation KCDownloader
-//@dynamic filePath;
 @dynamic remainingTime;
 @synthesize filePath = m_filePath;
+@synthesize totalLength = m_expectedDataLength;
 
 
 #pragma mark - Dealloc
@@ -159,7 +159,10 @@ NSString * const KCDownloadErrorHTTPStatusKey = @"KCDownloadErrorHTTPStatusKey";
     m_fileHandle = [NSFileHandle fileHandleForWritingAtPath:m_filePath.getPath];
     m_receivedDataBuffer = [[NSMutableData alloc] init];
     m_samplesOfDownloadedBytes = [[NSMutableArray alloc] init];
-    m_connection = [[NSURLConnection alloc] initWithRequest:self.fileRequest delegate:self startImmediately:NO];
+    
+    NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSOperationQueue *queue = [[NSOperationQueue alloc]init];
+    m_connection = [NSURLSession sessionWithConfiguration:sessionConfiguration delegate:self delegateQueue:queue];
     
     if (m_connection && ![self isCancelled])
     {
@@ -171,9 +174,9 @@ NSString * const KCDownloadErrorHTTPStatusKey = @"KCDownloadErrorHTTPStatusKey";
         
         // Start the download
         NSRunLoop* runLoop = [NSRunLoop currentRunLoop];
-        [m_connection scheduleInRunLoop:runLoop
-                                   forMode:NSDefaultRunLoopMode];
-        [m_connection start];
+        NSURLSessionDataTask *dataTask = [m_connection dataTaskWithRequest:self.fileRequest];
+        [dataTask resume];
+        
 
         // Start the speed timer to schedule speed download on a periodic basis
         m_speedTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
@@ -206,28 +209,39 @@ NSString * const KCDownloadErrorHTTPStatusKey = @"KCDownloadErrorHTTPStatusKey";
 {
     if (m_receivedDataBuffer)
     {
-//        [m_receivedDataBuffer setData:nil];
         [m_receivedDataBuffer resetBytesInRange:NSMakeRange(0, [m_receivedDataBuffer length])];
         [m_receivedDataBuffer setLength:0];
     }
 }
 
-#pragma mark - NSURLConnection Delegate
 
+#pragma mark delegate
 
-- (void)connection:(NSURLConnection*)connection didFailWithError:(NSError *)error
+#pragma mark -- NSURLSessionDelegate
+/* The last message a session delegate receives.  A session will only become
+ * invalid because of a systemic error or when it has been
+ * explicitly invalidated, in which case the error parameter will be nil.
+ */
+- (void)URLSession:(NSURLSession *)session didBecomeInvalidWithError:(nullable NSError *)error
 {
-    [self notifyFromCompletionWithError:error filePath:m_filePath.getPath];
+    NSLog(@"didBecomeInvalidWithError");
 }
 
-- (void)connection:(NSURLConnection*)connection didReceiveResponse:(NSURLResponse *)response
+
+#pragma mark -- NSURLSessionDataDelegate
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask
+didReceiveResponse:(NSURLResponse *)response
+ completionHandler:(void (^)(NSURLSessionResponseDisposition disposition))completionHandler
 {
+    NSLog(@"%@", response);
+    
     // If anything was previousy downloaded, add it to the total expected length for the progress property
     m_expectedDataLength = m_receivedDataLength + [response expectedContentLength];
-
+    
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
     NSError *error;
-    if (httpResponse.statusCode >= 400)
+    NSInteger statusCode = httpResponse.statusCode;
+    if (statusCode >= 400)
     {
         error = [NSError errorWithDomain:KCDownloadErrorDomain
                                     code:KCDownloadErrorHTTPError
@@ -236,7 +250,7 @@ NSString * const KCDownloadErrorHTTPStatusKey = @"KCDownloadErrorHTTPStatusKey";
                                                                        [NSHTTPURLResponse localizedStringForStatusCode:httpResponse.statusCode]],
                                             KCDownloadErrorHTTPStatusKey: @(httpResponse.statusCode) }];
     }
-
+    
     long long expected = @(m_expectedDataLength).longLongValue;
     if ([KCDownloader freeDiskSpace].longLongValue < expected && expected != -1)
     {
@@ -244,12 +258,12 @@ NSString * const KCDownloadErrorHTTPStatusKey = @"KCDownloadErrorHTTPStatusKey";
                                     code:KCDownloadErrorNotEnoughFreeDiskSpace
                                 userInfo:@{ NSLocalizedDescriptionKey:@"Not enough free disk space" }];
     }
-
+    
     if (!error)
     {
         
         [self clearReceivedDataBuffer];
-
+        
         dispatch_async(dispatch_get_main_queue(), ^{
             if (self.headersResponseBlock)
             {
@@ -261,27 +275,31 @@ NSString * const KCDownloadErrorHTTPStatusKey = @"KCDownloadErrorHTTPStatusKey";
             }
         });
     }
-    else {
+    else
+    {
         [self notifyFromCompletionWithError:error filePath:m_filePath.getPath];
     }
+    
+    
+    completionHandler(NSURLSessionResponseAllow);
 }
 
-- (void)connection:(NSURLConnection*)connection didReceiveData:(NSData *)data
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data
 {
     [m_receivedDataBuffer appendData:data];
     m_receivedDataLength += [data length];
-
+    
     KCLog(@"%@ | %.2f%% - Received: %ld - Total: %ld",
           m_filePath.getPath,
           (float) m_receivedDataLength / m_expectedDataLength * 100,
           (long) m_receivedDataLength, (long) m_expectedDataLength);
-
+    
     if (m_receivedDataBuffer.length > kBufferSize && [self isExecuting])
     {
         [m_fileHandle writeData:m_receivedDataBuffer];
         [self clearReceivedDataBuffer];
     }
-
+    
     dispatch_async(dispatch_get_main_queue(), ^{
         if (self.progressBlock)
         {
@@ -290,32 +308,43 @@ NSString * const KCDownloadErrorHTTPStatusKey = @"KCDownloadErrorHTTPStatusKey";
         if ([self.delegate respondsToSelector:@selector(onDownload:didReceiveData:totalLength:progress:)])
         {
             [self.delegate onDownload:self
-                     didReceiveData:m_receivedDataLength
-                            totalLength:m_expectedDataLength
-                           progress:self.progress];
+                       didReceiveData:m_receivedDataLength
+                          totalLength:m_expectedDataLength
+                             progress:self.progress];
         }
     });
 }
 
-- (void)connectionDidFinishLoading:(NSURLConnection*)connection
+#pragma mark -- NSURLSessionTaskDelegate
+- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(nullable NSError *)error
 {
-    if ([self isExecuting])
+    if (error == nil)
     {
-        [m_fileHandle writeData:m_receivedDataBuffer];
-        [self clearReceivedDataBuffer];
+        if ([self isExecuting])
+        {
+            [m_fileHandle writeData:m_receivedDataBuffer];
+            [self clearReceivedDataBuffer];
+            
+            [self notifyFromCompletionWithError:nil filePath:m_filePath.getPath];
+        }
         
-        [self notifyFromCompletionWithError:nil filePath:m_filePath.getPath];
+    }
+    else
+    {
+        [self notifyFromCompletionWithError:error filePath:m_filePath.getPath];
     }
 }
 
-
 #pragma mark - Public Methods
-
 
 - (void)cancelAndRemoveFile:(BOOL)remove
 {
     // Cancel the connection before deleting the file
-    [m_connection cancel];
+    if (m_connection)
+    {
+        [m_connection invalidateAndCancel];
+        m_connection = nil;
+    }
     
     if (remove)
     {
@@ -342,7 +371,11 @@ NSString * const KCDownloadErrorHTTPStatusKey = @"KCDownloadErrorHTTPStatusKey";
 - (void)finishOperationWithState:(KCDownloadState)state
 {    
     // Cancel the connection in case cancel was called directly
-    [m_connection cancel];
+    if (m_connection)
+    {
+        [m_connection invalidateAndCancel];
+        m_connection = nil;
+    }
     [m_speedTimer invalidate];
     [m_fileHandle closeFile];
     
