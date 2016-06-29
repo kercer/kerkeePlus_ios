@@ -224,7 +224,7 @@ NSString * const KCDownloadErrorHTTPStatusKey = @"KCDownloadErrorHTTPStatusKey";
  */
 - (void)URLSession:(NSURLSession *)session didBecomeInvalidWithError:(nullable NSError *)error
 {
-    NSLog(@"didBecomeInvalidWithError");
+    KCLog(@"didBecomeInvalidWithError");
 }
 
 
@@ -233,7 +233,7 @@ NSString * const KCDownloadErrorHTTPStatusKey = @"KCDownloadErrorHTTPStatusKey";
 didReceiveResponse:(NSURLResponse *)response
  completionHandler:(void (^)(NSURLSessionResponseDisposition disposition))completionHandler
 {
-    NSLog(@"%@", response);
+//    KCLog(@"%@", response);
     
     // If anything was previousy downloaded, add it to the total expected length for the progress property
     m_expectedDataLength = m_receivedDataLength + [response expectedContentLength];
