@@ -8,16 +8,18 @@
 
 #import "KCDownloadEngine.h"
 #import "KCDownloader.h"
+#import <KCFile.h>
+#import <KCBaseDefine.h>
 
 @interface KCDownloadEngine ()
 {
-    NSString* m_defaultDownloadDirPath;
+    KCFile* m_defaultDownloadDir;
 }
 @property (nonatomic, strong) NSOperationQueue *operationQueue;
 @end
 
 @implementation KCDownloadEngine
-@synthesize defaultDownloadDirPath = m_defaultDownloadDirPath;
+@synthesize defaultDownloadDir = m_defaultDownloadDir;
 @dynamic downloadCount;
 @dynamic currentDownloadsCount;
 
@@ -31,9 +33,17 @@
     if (self)
     {
         self.operationQueue = [[NSOperationQueue alloc] init];
-        self.defaultDownloadDirPath = [NSString stringWithString:NSTemporaryDirectory()];
+        m_defaultDownloadDir = [[KCFile alloc] initWithPath:[NSString stringWithString:NSTemporaryDirectory()]];
     }
     return self;
+}
+
+
+- (void)dealloc
+{
+    KCRelease(m_defaultDownloadDir);
+    m_defaultDownloadDir = nil;
+    KCDealloc(super);
 }
 
 + (instancetype)defaultDownloadEngine
@@ -42,7 +52,7 @@
     static id sharedManager = nil;
     dispatch_once(&onceToken, ^{
         sharedManager = [[[self class] alloc] init];
-        [sharedManager setQueueName:@"KCDownloadManager_SharedInstance_Queue"];
+        [sharedManager setQueueName:@"KCDownloadEngine_SharedInstance_Queue"];
     });
     return sharedManager;
 }
@@ -50,13 +60,21 @@
 
 #pragma mark - KCDownloader Management
 
-
-- (KCDownloader *)startDownloadWithURL:(NSURL *)aUrl toPath:(NSString *)aToPath delegate:(id<KCDownloaderDelegate>)aDelegate
+- (KCDownloader *)startDownloadWithURL:(NSURL*)aUrl
 {
-    NSString *downloadPath = aToPath ? aToPath : [self.defaultDownloadDirPath stringByAppendingPathComponent:[[NSURL URLWithString:[aUrl absoluteString]] lastPathComponent]];
+    return [self startDownloadWithURL:aUrl toPath:nil];
+}
+- (KCDownloader *)startDownloadWithURL:(NSURL*)aUrl toPath:(KCFile*)aToPath
+{
+    return [self startDownloadWithURL:aUrl toPath:aToPath delegate:nil];
+}
+
+- (KCDownloader *)startDownloadWithURL:(NSURL*)aUrl toPath:(KCFile*)aToPath delegate:(id<KCDownloaderDelegate>)aDelegate
+{
+    NSString* downloadPath = aToPath ? aToPath.getAbsolutePath : [m_defaultDownloadDir.getAbsolutePath stringByAppendingPathComponent:[[NSURL URLWithString:[aUrl absoluteString]] lastPathComponent]];
 
     KCDownloader *downloader = [[KCDownloader alloc] initWithURL:aUrl
-                                                            toPath:downloadPath
+                                                            toPath:[[KCFile alloc] initWithPath:downloadPath]
                                                                 delegate:aDelegate];
     [self.operationQueue addOperation:downloader];
 
@@ -64,16 +82,16 @@
 }
 
 - (KCDownloader *)startDownloadWithURL:(NSURL *)aUrl
-                            toPath:(NSString*)aToPath
+                            toPath:(KCFile*)aToPath
                        headers:(void (^)(NSURLResponse* aResponse))aHeadersResponseBlock
                               progress:(void (^)(uint64_t aReceivedLength, uint64_t aTotalLength, NSInteger aRemainingTime, float aProgress))aProgressBlock
                                  error:(void (^)(NSError *aError))aErrorBlock
-                              complete:(void (^)(BOOL aIsComplete, NSString *aFilePath))aCompleteBlock
+                              complete:(void (^)(BOOL aIsComplete, KCFile* aFilePath))aCompleteBlock
 {
-    NSString *downloadPath = aToPath ? aToPath : [self.defaultDownloadDirPath stringByAppendingPathComponent:[[NSURL URLWithString:[aUrl absoluteString]] lastPathComponent]];
+    NSString *downloadPath = aToPath ? aToPath.getAbsolutePath : [m_defaultDownloadDir.getAbsolutePath stringByAppendingPathComponent:[[NSURL URLWithString:[aUrl absoluteString]] lastPathComponent]];
 
     KCDownloader *downloader = [[KCDownloader alloc] initWithURL:aUrl
-                                                            toPath:downloadPath
+                                                            toPath:[[KCFile alloc] initWithPath:downloadPath]
                                                            headers:aHeadersResponseBlock
                                                                 progress:aProgressBlock
                                                                    error:aErrorBlock
@@ -105,14 +123,11 @@
     [self.operationQueue setName:aName];
 }
 
-- (BOOL)setDefaultDownloadPath:(NSString *)aDirPath error:(NSError *__autoreleasing *)aError
+- (BOOL)setDefaultDownloadPath:(KCFile*)aDirPath error:(NSError *__autoreleasing *)aError
 {
-    if ([[NSFileManager defaultManager] createDirectoryAtPath:aDirPath
-                                  withIntermediateDirectories:YES
-                                                   attributes:nil
-                                                        error:aError])
+    if (aDirPath && aDirPath.mkdirs)
     {
-        m_defaultDownloadDirPath = aDirPath;
+        m_defaultDownloadDir = aDirPath;
         return YES;
     }
     else

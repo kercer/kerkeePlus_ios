@@ -45,7 +45,7 @@ NSString * const KCDownloadErrorHTTPStatusKey = @"KCDownloadErrorHTTPStatusKey";
 @property (nonatomic, copy) void (^headersResponseBlock)(NSURLResponse *aResponse);
 @property (nonatomic, copy) void (^progressBlock)(uint64_t aReceivedLength, uint64_t aTotalLength, NSInteger aRemainingTime, float progress);
 @property (nonatomic, copy) void (^errorBlock)(NSError* aError);
-@property (nonatomic, copy) void (^completeBlock)(BOOL aDownloadFinished, NSString *aFilePath);
+@property (nonatomic, copy) void (^completeBlock)(BOOL aDownloadFinished, KCFile* aFilePath);
 
 @end
 
@@ -61,20 +61,21 @@ NSString * const KCDownloadErrorHTTPStatusKey = @"KCDownloadErrorHTTPStatusKey";
 - (void)dealloc
 {
     [m_speedTimer invalidate];
+    KCDealloc(super);
 }
 
 
 #pragma mark - Init
 
 
-- (instancetype)initWithURL:(NSURL *)aUrl toPath:(NSString *)aPath delegate:(id<KCDownloaderDelegate>)aDelegate
+- (instancetype)initWithURL:(NSURL *)aUrl toPath:(KCFile*)aPath delegate:(id<KCDownloaderDelegate>)aDelegate
 {
     self = [super init];
     if (self)
     {
         self.downloadURL = aUrl;
         self.delegate = aDelegate;
-        m_filePath = [[KCFile alloc] initWithPath:aPath];
+        m_filePath = aPath;
         self.state = KCDownloadStateReady;
         self.fileRequest = [NSMutableURLRequest requestWithURL:self.downloadURL
                                                    cachePolicy:NSURLRequestUseProtocolCachePolicy
@@ -84,11 +85,11 @@ NSString * const KCDownloadErrorHTTPStatusKey = @"KCDownloadErrorHTTPStatusKey";
 }
 
 - (instancetype)initWithURL:(NSURL *)aUrl
-               toPath:(NSString*)aPath
+               toPath:(KCFile*)aPath
             headers:(void (^)(NSURLResponse* aResponse))headersResponseBlock
                    progress:(void (^)(uint64_t aReceivedLength, uint64_t aTotalLength, NSInteger aRemainingTime, float aProgress))aProgressBlock
                       error:(void (^)(NSError* aError))aErrorBlock
-                   complete:(void (^)(BOOL aDownloadFinished, NSString *aFilePath))aCompleteBlock
+                   complete:(void (^)(BOOL aDownloadFinished, KCFile*aFilePath))aCompleteBlock
 {
     self = [self initWithURL:aUrl toPath:aPath delegate:nil];
     if (self)
@@ -277,7 +278,7 @@ didReceiveResponse:(NSURLResponse *)response
     }
     else
     {
-        [self notifyFromCompletionWithError:error filePath:m_filePath.getPath];
+        [self notifyFromCompletionWithError:error filePath:m_filePath];
     }
     
     
@@ -325,19 +326,19 @@ didReceiveResponse:(NSURLResponse *)response
             [m_fileHandle writeData:m_receivedDataBuffer];
             [self clearReceivedDataBuffer];
             
-            [self notifyFromCompletionWithError:nil filePath:m_filePath.getPath];
+            [self notifyFromCompletionWithError:nil filePath:m_filePath];
         }
         
     }
     else
     {
-        [self notifyFromCompletionWithError:error filePath:m_filePath.getPath];
+        [self notifyFromCompletionWithError:error filePath:m_filePath];
     }
 }
 
 #pragma mark - Public Methods
 
-- (void)cancelAndRemoveFile:(BOOL)remove
+- (void)cancelAndRemoveFile:(BOOL)aIsRemove
 {
     // Cancel the connection before deleting the file
     if (m_connection)
@@ -346,7 +347,7 @@ didReceiveResponse:(NSURLResponse *)response
         m_connection = nil;
     }
     
-    if (remove)
+    if (aIsRemove)
     {
         NSError *error;
         if (![self removeFileWithError:&error])
@@ -359,9 +360,9 @@ didReceiveResponse:(NSURLResponse *)response
     [self cancel];
 }
 
-- (void)addDependentDownload:(KCDownloader *)download
+- (void)addDependentDownload:(KCDownloader *)aDownload
 {
-    [self addDependency:download];
+    [self addDependency:aDownload];
 }
 
 
@@ -403,7 +404,7 @@ didReceiveResponse:(NSURLResponse *)response
     [self didChangeValueForKey:@"isCancelled"];
 }
 
-- (void)notifyFromCompletionWithError:(NSError *)error filePath:(NSString *)aFilePath
+- (void)notifyFromCompletionWithError:(NSError *)error filePath:(KCFile*)aFilePath
 {
     BOOL success = error == nil;
     

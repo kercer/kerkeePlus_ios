@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 @class KCDownloader;
+@class KCFile;
 
 #pragma mark - KCDownloader Delegate
 
@@ -33,6 +34,6 @@
 /**
  Called when the download is finished or when the operation has been cancelled. The `KCDownloader` operation will be removed from `KCDownloadManager` just after this method is called.
  */
-- (void)onDownload:(KCDownloader *)aDownloader didComplete:(BOOL)aIsComplete path:(NSString *)aFilePath;
+- (void)onDownload:(KCDownloader *)aDownloader didComplete:(BOOL)aIsComplete path:(KCFile*)aFilePath;
 
 @end

@@ -70,7 +70,7 @@ typedef NS_ENUM(NSUInteger, KCDownloadState) {
  The URL of the file to download.
  @warning You should not set this property directly, as it is managed by the initialization method.
  */
-@property (nonatomic, copy, readonly) NSURL *downloadURL;
+@property (nonatomic, copy, readonly) NSURL* downloadURL;
 
 /**
  The NSMutableURLRequest that will be performed by the NSURLConnection. Use this object to pass custom headers to your request if needed.
@@ -101,24 +101,24 @@ typedef NS_ENUM(NSUInteger, KCDownloadState) {
 @property (nonatomic, assign, readonly) KCDownloadState state;
 
 
-- (instancetype)initWithURL:(NSURL *)aUrl toPath:(NSString *)aPath delegate:(id<KCDownloaderDelegate>)aDelegate;
+- (instancetype)initWithURL:(NSURL *)aUrl toPath:(KCFile*)aPath delegate:(id<KCDownloaderDelegate>)aDelegate;
 
-- (instancetype)initWithURL:(NSURL *)aUrl toPath:(NSString*)aPath
+- (instancetype)initWithURL:(NSURL *)aUrl toPath:(KCFile*)aPath
               headers:(void (^)(NSURLResponse* aResponse))headersResponseBlock
                    progress:(void (^)(uint64_t aReceivedLength, uint64_t aTotalLength, NSInteger aRemainingTime, float aProgress))aProgressBlock
                       error:(void (^)(NSError* aError))aErrorBlock
-                   complete:(void (^)(BOOL aDownloadFinished, NSString *aFilePath))aCompleteBlock;
+                   complete:(void (^)(BOOL aDownloadFinished, KCFile* aFilePath))aCompleteBlock;
 
 /**
  Cancels the download. Remove already downloaded parts of the file from the disk is asked.
  */
-- (void)cancelAndRemoveFile:(BOOL)remove;
+- (void)cancelAndRemoveFile:(BOOL)aIsRemove;
 
 /**
  Makes the receiver download dependent of the given download. The receiver download will not execute itself until the given download has finished.
  @param download  The KCDownloader on which to depend.
  */
-- (void)addDependentDownload:(KCDownloader *)download;
+- (void)addDependentDownload:(KCDownloader *)aDownload;
 
 @end
 
