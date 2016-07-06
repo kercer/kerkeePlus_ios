@@ -106,6 +106,13 @@
 }
 
 
+- (void)notifyDeployError:(KCDeployError*)aError dek:(KCDek*)aDek
+{
+    if ([m_deployFlow respondsToSelector:@selector(onDeployError:dek:)])
+        [m_deployFlow onDeployError:aError dek:aDek];
+}
+
+
 - (BOOL)checkHtmlDir
 {
     KCFile* file = [[KCFile alloc] initWithPath:[self getRootPath] name:@"/html"];

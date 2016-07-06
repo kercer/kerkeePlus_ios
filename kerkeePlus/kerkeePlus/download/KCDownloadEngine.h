@@ -16,10 +16,10 @@
 @interface KCDownloadEngine : NSObject
 
 + (instancetype)defaultDownloadEngine;
-- (KCDownloader *)startDownloadWithURL:(NSURL*)aUrl;
-- (KCDownloader *)startDownloadWithURL:(NSURL*)aUrl toPath:(KCFile*)aToPath;
-- (KCDownloader *)startDownloadWithURL:(NSURL*)aUrl toPath:(KCFile*)aToPath delegate:(id<KCDownloaderDelegate>)aDelegate;
-- (KCDownloader *)startDownloadWithURL:(NSURL*)aUrl
+- (KCDownloader*)startDownloadWithURL:(NSURL*)aUrl;
+- (KCDownloader*)startDownloadWithURL:(NSURL*)aUrl toPath:(KCFile*)aToPath;
+- (KCDownloader*)startDownloadWithURL:(NSURL*)aUrl toPath:(KCFile*)aToPath delegate:(id<KCDownloaderDelegate>)aDelegate;
+- (KCDownloader*)startDownloadWithURL:(NSURL*)aUrl
                             toPath:(KCFile*)aToPath
                          headers:(void (^)(NSURLResponse* aResponse))aHeadersResponseBlock
                               progress:(void (^)(uint64_t aReceivedLength, uint64_t aTotalLength, NSInteger aRemainingTime, float aProgress))aProgressBlock

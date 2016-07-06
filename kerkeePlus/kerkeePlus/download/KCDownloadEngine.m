@@ -52,7 +52,7 @@
     static id sharedManager = nil;
     dispatch_once(&onceToken, ^{
         sharedManager = [[[self class] alloc] init];
-        [sharedManager setQueueName:@"KCDownloadEngine_SharedInstance_Queue"];
+        [sharedManager setQueueName:@"KCDownloadEngine_DefaultDownloadEngine_Queue"];
     });
     return sharedManager;
 }
@@ -60,20 +60,20 @@
 
 #pragma mark - KCDownloader Management
 
-- (KCDownloader *)startDownloadWithURL:(NSURL*)aUrl
+- (KCDownloader*)startDownloadWithURL:(NSURL*)aUrl
 {
     return [self startDownloadWithURL:aUrl toPath:nil];
 }
-- (KCDownloader *)startDownloadWithURL:(NSURL*)aUrl toPath:(KCFile*)aToPath
+- (KCDownloader*)startDownloadWithURL:(NSURL*)aUrl toPath:(KCFile*)aToPath
 {
     return [self startDownloadWithURL:aUrl toPath:aToPath delegate:nil];
 }
 
-- (KCDownloader *)startDownloadWithURL:(NSURL*)aUrl toPath:(KCFile*)aToPath delegate:(id<KCDownloaderDelegate>)aDelegate
+- (KCDownloader*)startDownloadWithURL:(NSURL*)aUrl toPath:(KCFile*)aToPath delegate:(id<KCDownloaderDelegate>)aDelegate
 {
     NSString* downloadPath = aToPath ? aToPath.getAbsolutePath : [m_defaultDownloadDir.getAbsolutePath stringByAppendingPathComponent:[[NSURL URLWithString:[aUrl absoluteString]] lastPathComponent]];
 
-    KCDownloader *downloader = [[KCDownloader alloc] initWithURL:aUrl
+    KCDownloader* downloader = [[KCDownloader alloc] initWithURL:aUrl
                                                             toPath:[[KCFile alloc] initWithPath:downloadPath]
                                                                 delegate:aDelegate];
     [self.operationQueue addOperation:downloader];
@@ -81,7 +81,7 @@
     return downloader;
 }
 
-- (KCDownloader *)startDownloadWithURL:(NSURL *)aUrl
+- (KCDownloader*)startDownloadWithURL:(NSURL *)aUrl
                             toPath:(KCFile*)aToPath
                        headers:(void (^)(NSURLResponse* aResponse))aHeadersResponseBlock
                               progress:(void (^)(uint64_t aReceivedLength, uint64_t aTotalLength, NSInteger aRemainingTime, float aProgress))aProgressBlock

@@ -36,6 +36,8 @@
 		DF8753C71D226355007CC9B6 /* KCDownloadEngine.h in Resources */ = {isa = PBXBuildFile; fileRef = DFE2903A1D1BED7B005F0F52 /* KCDownloadEngine.h */; };
 		DF8753C81D226355007CC9B6 /* KCDownloader.h in Resources */ = {isa = PBXBuildFile; fileRef = DFE2903C1D1BED7B005F0F52 /* KCDownloader.h */; };
 		DF8753C91D226355007CC9B6 /* KCDownloaderDelegate.h in Resources */ = {isa = PBXBuildFile; fileRef = DF582C151D21256C00FA1898 /* KCDownloaderDelegate.h */; };
+		DF945BCE1D2CDDDA00E8FF20 /* KCUtilVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = DF945BCC1D2CDDDA00E8FF20 /* KCUtilVersion.h */; };
+		DF945BCF1D2CDDDA00E8FF20 /* KCUtilVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = DF945BCD1D2CDDDA00E8FF20 /* KCUtilVersion.m */; };
 		DFE290331D1BB1F9005F0F52 /* kerzip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFE28F961D1BAEF5005F0F52 /* kerzip.framework */; };
 		DFE2903E1D1BED7B005F0F52 /* KCDownloadEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = DFE2903A1D1BED7B005F0F52 /* KCDownloadEngine.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DFE2903F1D1BED7B005F0F52 /* KCDownloadEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = DFE2903B1D1BED7B005F0F52 /* KCDownloadEngine.m */; };
@@ -146,6 +148,8 @@
 		DF69A5791D13D9730049C628 /* KCDeployInstall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCDeployInstall.m; sourceTree = "<group>"; };
 		DF69A57C1D13D99B0049C628 /* KCWebAppManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCWebAppManager.h; sourceTree = "<group>"; };
 		DF69A57D1D13D99B0049C628 /* KCWebAppManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCWebAppManager.m; sourceTree = "<group>"; };
+		DF945BCC1D2CDDDA00E8FF20 /* KCUtilVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCUtilVersion.h; sourceTree = "<group>"; };
+		DF945BCD1D2CDDDA00E8FF20 /* KCUtilVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCUtilVersion.m; sourceTree = "<group>"; };
 		DFE28F8F1D1BAEF5005F0F52 /* kerzip.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = kerzip.xcodeproj; path = kerzip/kerzip.xcodeproj; sourceTree = "<group>"; };
 		DFE2903A1D1BED7B005F0F52 /* KCDownloadEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCDownloadEngine.h; sourceTree = "<group>"; };
 		DFE2903B1D1BED7B005F0F52 /* KCDownloadEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCDownloadEngine.m; sourceTree = "<group>"; };
@@ -273,6 +277,8 @@
 		DF69A55F1D13D6200049C628 /* util */ = {
 			isa = PBXGroup;
 			children = (
+				DF945BCC1D2CDDDA00E8FF20 /* KCUtilVersion.h */,
+				DF945BCD1D2CDDDA00E8FF20 /* KCUtilVersion.m */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -317,6 +323,7 @@
 				DF69A5761D13D95D0049C628 /* KCDeployFlowDefault.h in Headers */,
 				DF69A56A1D13D9060049C628 /* KCDeploy.h in Headers */,
 				DF69A5721D13D9400049C628 /* KCDeployFlow.h in Headers */,
+				DF945BCE1D2CDDDA00E8FF20 /* KCUtilVersion.h in Headers */,
 				DF046CB11CDC4E96003CA85C /* kerkeePlus.h in Headers */,
 				DF69A56E1D13D91F0049C628 /* KCDeployAssert.h in Headers */,
 			);
@@ -485,6 +492,7 @@
 			files = (
 				DF69A56B1D13D9060049C628 /* KCDeploy.m in Sources */,
 				DF69A57F1D13D99B0049C628 /* KCWebAppManager.m in Sources */,
+				DF945BCF1D2CDDDA00E8FF20 /* KCUtilVersion.m in Sources */,
 				DF69A5631D13D7040049C628 /* KCDek.m in Sources */,
 				DF533A191D195784005F0729 /* KCDeployError.m in Sources */,
 				DFE2903F1D1BED7B005F0F52 /* KCDownloadEngine.m in Sources */,

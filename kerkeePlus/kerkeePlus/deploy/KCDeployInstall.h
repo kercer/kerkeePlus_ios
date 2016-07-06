@@ -12,5 +12,7 @@
 @interface KCDeployInstall : NSObject
 
 - (instancetype)initWithDeploy:(KCDeploy*)aDeploy;
+- (void)installWebApps:(NSArray*)aWebApps;
+- (void)installWebApp:(KCWebApp*)aWebApp;
 
 @end

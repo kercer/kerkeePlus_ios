@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface KCDeployError : NSObject
+@interface KCDeployError : NSError
 
 @end
