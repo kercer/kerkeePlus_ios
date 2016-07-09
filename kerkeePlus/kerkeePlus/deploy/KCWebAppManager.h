@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "KCWebApp.h"
 
 @protocol KCDeployFlow;
 
@@ -16,5 +17,11 @@
 - (instancetype)initWithDeployFlow:(id<KCDeployFlow>)aDeployFlow assetFileName:(NSString*)aAssetFileName;
 
 - (void)setManifestFileName:(NSString*)aManifestFileName;
+
+- (void)upgradeWebApps:(NSArray*)aWebApps;
+- (void)upgradeWebApp:(KCWebApp*)aWebApp;
+
+- (NSString*)getRootPath;
+- (NSString*)getResRootPath;
 
 @end

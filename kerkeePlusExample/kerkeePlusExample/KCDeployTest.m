@@ -7,8 +7,9 @@
 //
 
 #import "KCDeployTest.h"
-#import "kerkeePlus/KCWebAppManager.h"
-
+#import <kerkeePlus/KCWebAppManager.h>
+#import <kerkeePlus/KCWebApp.h>
+#import <kerkee.h>
 
 @interface KCDeployTest ()
 {
@@ -59,7 +60,98 @@
  */
 - (void)check
 {
+    NSMutableDictionary* postData = [[NSMutableDictionary alloc] init];
+    [postData setObject:@"2.2.1" forKey:@"versionName"];
+    [postData setObject:@"11" forKey:@"buildCode"];
+    [postData setObject:@"ios" forKey:@"platform"];
+    [postData setObject:@"umeng" forKey:@"channelId"];
     
+    NSMutableArray* webappList = [[NSMutableArray alloc] init];
+    [webappList addObject:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:0], @"id", @"1.0.1", @"version", nil]];
+    [postData setObject:webappList forKey:@"list"];
+
+    NSData* jsonData = [NSJSONSerialization dataWithJSONObject:postData options:0 error:nil];
+    
+    KCLog(@"%@", [[NSString alloc]initWithData:jsonData encoding:NSUTF8StringEncoding]);
+    
+//    [self.class postData:[NSURL URLWithString:@"post url"] data:(NSData*)jsonData finishedBlock:^(NSData *data)
+//    {
+//        NSString *strData = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+//        if (strData)
+//        {
+//        }
+//    }];
+    
+   //This a Demo to get check config, Because I write configuration on my server, so i use GET HTTP Method to fetch this data, you can use pos in your project
+    [self.class fetchData:[NSURL URLWithString:@"http://www.linzihong.com/test/update/update"] finishedBlock:^(NSData *data)
+     {
+         NSString *strData = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+         if (strData)
+         {
+             NSDictionary* dic = [NSJSONSerialization JSONObjectWithData:[strData dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
+             NSArray* webappList = [dic objectForKey:@"list"];
+             NSDictionary* jsWebapp = [webappList objectAtIndex:0];
+             
+             KCURI* manifestURI = [KCURI URIWithString:[jsWebapp objectForKey:@"manifestUrl"]];
+             int nID = [[jsWebapp objectForKey:@"ID"] intValue];
+             //if nID is 0, the webapp path is ResRootPath, if you has sub web app you can use not 0, and the webapp path is not ResRootPath
+             KCFile* fileRootPath = [[KCFile alloc] initWithPath:m_webAppMgr.getResRootPath];
+             
+             KCWebApp* webApp = [[KCWebApp alloc] initWithID:nID rootPath:fileRootPath manifestUri:manifestURI];
+             if (m_webAppMgr)
+             {
+                 [m_webAppMgr upgradeWebApp:webApp];
+             }
+             
+         }
+     }];
+    
+    
+}
+
+
++ (NSURLSession *)session
+{
+    static NSURLSession *session;
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    });
+    
+    return session;
+}
+
++(void)fetchData:(NSURL*)aUrl finishedBlock:(void(^)(NSData *data))block
+{
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:aUrl];
+    
+    NSURLSession *session = [self session];
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
+                                      {
+                                          if (!error && block)
+                                          {
+                                              block(data);
+                                          }
+                                      }];
+    [dataTask resume];
+}
+
++(void)postData:(NSURL*)aUrl data:(NSData*)aData finishedBlock:(void(^)(NSData *data))block
+{
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:aUrl];
+    request.HTTPMethod = @"POST";
+    request.HTTPBody = aData;
+    
+    NSURLSession *session = [self session];
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
+                                      {
+                                          if (!error && block)
+                                          {
+                                              block(data);
+                                          }
+                                      }];
+    [dataTask resume];
 }
 
 

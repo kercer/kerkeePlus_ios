@@ -100,7 +100,8 @@
     if ([self canInstall:aDek])
     {
         NSString* downloadDir = aDek.mRootPath.getAbsolutePath;
-        downloadDir = [downloadDir substring:0 end:[downloadDir lastIndexOfChar:KCFile.separatorChar]];
+        int IndexOfChar = [downloadDir lastIndexOfChar:KCFile.separatorChar];
+        downloadDir = [downloadDir substring:0 end:IndexOfChar];
         KCFile* dekFile = [[KCFile alloc] initWithPath:[NSString stringWithFormat:@"%@%@%@", downloadDir, KCFile.separator, kDekFileName]];
         KCAutorelease(dekFile);
         

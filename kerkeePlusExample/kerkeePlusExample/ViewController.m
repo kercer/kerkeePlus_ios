@@ -42,6 +42,7 @@
     
     KCDeployTest* deployTest = [[KCDeployTest alloc] init];
     [deployTest setup];
+    [deployTest check];
     
     
     

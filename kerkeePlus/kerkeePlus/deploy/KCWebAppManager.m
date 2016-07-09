@@ -216,4 +216,13 @@
     [m_deployInstall installWebApp:aWebApp];
 }
 
+- (NSString*)getRootPath
+{
+    return [m_deploy getRootPath];
+}
+- (NSString*)getResRootPath
+{
+    return [m_deploy getResRootPath];
+}
+
 @end

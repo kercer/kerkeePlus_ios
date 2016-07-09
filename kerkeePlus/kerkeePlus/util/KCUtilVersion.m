@@ -14,8 +14,8 @@
 {
     int res = 0;
     
-    NSArray* aNumber = [a componentsSeparatedByString:@"\\."];
-    NSArray* bNumber = [b componentsSeparatedByString:@"\\."];
+    NSArray* aNumber = [a componentsSeparatedByString:@"."];
+    NSArray* bNumber = [b componentsSeparatedByString:@"."];
     NSUInteger maxIndex = aNumber.count > bNumber.count ? aNumber.count :bNumber.count;
     
         for (int i = 0; i < maxIndex; i++)
