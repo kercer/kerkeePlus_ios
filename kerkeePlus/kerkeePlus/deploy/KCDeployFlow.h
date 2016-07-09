@@ -7,10 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <KCFile.h>
-#import "KCDek.h"
-#import "KCDeployError.h"
 
+@class KCFile;
+@class KCDek;
+@class KCDeployError;
 
 @protocol KCDeployFlow <NSObject>
 

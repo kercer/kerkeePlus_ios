@@ -18,6 +18,8 @@
 #import <KCTaskQueue.h>
 #import <KCBaseDefine.h>
 #import <KCMainBundle.h>
+#import <KCFile.h>
+#import <KCWebApp.h>
 
 
 #define kDBName @"WebappsDB"

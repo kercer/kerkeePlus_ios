@@ -9,6 +9,8 @@
 #import "KCDek.h"
 #import <KCFetchManifest.h>
 #import <KCBaseDefine.h>
+#import <KCFile.h>
+#import <KCManifestObject.h>
 
 
 @interface KCDek ()

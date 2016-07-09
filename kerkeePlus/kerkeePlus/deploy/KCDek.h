@@ -7,12 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <KCFile.h>
-#import <KCManifestObject.h>
 #import "KCWebApp.h"
 
 #define kDefaultManifestName @"cache.manifest"
 
+@class KCManifestObject;
 @interface KCDek : NSObject
 
 - (id)initWithRootPath:(KCFile*)aRootPath;

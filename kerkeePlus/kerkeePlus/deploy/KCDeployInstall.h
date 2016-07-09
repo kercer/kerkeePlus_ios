@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "KCDeploy.h"
 
+@class KCWebApp;
+
 @interface KCDeployInstall : NSObject
 
 - (instancetype)initWithDeploy:(KCDeploy*)aDeploy;

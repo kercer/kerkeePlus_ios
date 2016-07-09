@@ -12,6 +12,9 @@
 #import "KCDek.h"
 #import <KCBaseDefine.h>
 #import <KCArchiver.h>
+#import <KCManifestObject.h>
+#import <KCURI.h>
+#import <KCFile.h>
 
 @interface KCWebApp ()
 {

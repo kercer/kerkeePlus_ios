@@ -16,6 +16,8 @@
 #import <KCBaseDefine.h>
 #import <KCString.h>
 #import "KCDownloadEngine.h"
+#import <KCURI.h>
+#import <KCFile.h>
 
 #define kDekFileName @"tmp.dek"
 

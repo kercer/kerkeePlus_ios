@@ -19,5 +19,5 @@
 
 - (BOOL)checkHtmlDir;
 
-@property (nonatomic, assign) id<KCDeployFlow> mDeployFlow;
+@property (nonatomic, strong) id<KCDeployFlow> mDeployFlow;
 @end

@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <kerdb/KCDBObject.h>
-#import <KCURI.h>
-#import <KCFile.h>
 
+@class KCURI;
+@class KCFile;
 @interface KCWebApp : NSObject <KCDBObject>
 
 - (id)initWithID:(int)aID rootPath:(KCFile*)aRootPath manifestUri:(KCURI*)aManifestUri;

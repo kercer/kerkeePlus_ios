@@ -9,7 +9,6 @@
 #import "ViewController.h"
 #import "kerkee.h"
 #import "KCRegistMgr.h"
-#import "KCAssistant.h"
 #import "KCBaseDefine.h"
 #import "KCWebPathDefine.h"
 #import "KCURIComponents.h"
@@ -23,6 +22,7 @@
 #import "KCString.h"
 #import "KCLog.h"
 #import "kerkeePlus/KCDownloadEngine.h"
+#import "KCDeployTest.h"
 
 
 @interface ViewController ()
@@ -40,8 +40,10 @@
     // Do any additional setup after loading the view, typically from a nib.
     //addSkipBackupAttributeToItemAtURL
     
-    KCAssistant* assistant = [[KCAssistant alloc] init];
-    KCRelease(assistant);
+    KCDeployTest* deployTest = [[KCDeployTest alloc] init];
+    [deployTest setup];
+    
+    
     
     [KCRegistMgr registAllClass];
     KCLog(@"docment dir:\n%@",KCWebPath_HtmlRootPath);
@@ -52,34 +54,9 @@
     //you can implement webview delegate
     m_jsBridge = [[KCJSBridge alloc] initWithWebView:m_webView delegate:self];
     
-    
-//    //test uri
-//    KCURIComponents *components = [KCURIComponents componentsWithURL:[NSURL URLWithString:@"scheme://user:password@host:0/path?query=1&q=2#fragment"]
-//                                             resolvingAgainstBaseURL:NO];
-    
-    KCFile* file = [[KCFile alloc] initWithPath:nil name:nil];
-    NSString* path = [KCFileManager pathForDocumentsDirectory];
-    KCFile* file2 = [[KCFile alloc] initWithPath:path name:@"b/c/d/f/g.gif"];
-    KCURI* u = file2.toURI;
-    BOOL s = [file2 mkdirs];
-    BOOL d=[file2 remove];
-    
-    KC_PRINT_RUNTIME_BEGIN
-    
-    NSString* a = @"";
-    NSString* b = [a replaceChar:'&' withChar:'#'];
-    int c = 1;
-    
-    KC_PRINT_RUNTIME_COMMIT
-    
-    NSString* urlDownload = @"http://gdown.baidu.com/data/wisegame/4f9b25fb0e093ac6/QQ_220.apk";
-//    NSString* urlDownload = @"http://www.linzihong.com/test/update/html.dek"
-    [[KCDownloadEngine defaultDownloadEngine] startDownloadWithURL:[NSURL URLWithString:urlDownload] toPath:nil delegate:nil];
-    
 
 //    NSString* pathTestHtml = [[NSBundle mainBundle] pathForResource:@"test.html" ofType:Nil];
 //    NSURL* url =[NSURL URLWithString:pathTestHtml];
-    
     NSURL* url =[NSURL URLWithString:KCWebPath_ModulesTest_File];
     
     NSMutableURLRequest *request =[NSMutableURLRequest requestWithURL:url];
@@ -89,6 +66,8 @@
     
     //test action
     [self testAction];
+    
+    [self testDownload];
 }
 
 
@@ -123,6 +102,13 @@
     [KCFetchManifest fetchLocalManifests:uriLocal block:^(KCManifestObject *aManifestObject) {
         KCLog(@"%@", aManifestObject);
     }];
+}
+
+- (void)testDownload
+{
+    NSString* urlDownload = @"http://gdown.baidu.com/data/wisegame/4f9b25fb0e093ac6/QQ_220.apk";
+    //    NSString* urlDownload = @"http://www.linzihong.com/test/update/html.dek"
+    [[KCDownloadEngine defaultDownloadEngine] startDownloadWithURL:[NSURL URLWithString:urlDownload] toPath:nil delegate:nil];
 }
 
 

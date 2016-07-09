@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "KCDeployFlow.h"
+
+@protocol KCDeployFlow;
 
 @interface KCWebAppManager : NSObject
 

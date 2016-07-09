@@ -13,12 +13,13 @@
 #import "KCDek.h"
 #import <kerzip/KCZip.h>
 #import "KCDeployError.h"
+#import "KCDeployFlowDefault.h"
 
 
 @interface KCDeploy ()
 {
     KCWebPath* m_webPath;
-    __unsafe_unretained id<KCDeployFlow> m_deployFlow;
+    id<KCDeployFlow> m_deployFlow;
 }
 
 @end
@@ -41,6 +42,8 @@
     {
         if (aDeployFlow)
             m_deployFlow = aDeployFlow;
+        else
+            m_deployFlow = [[KCDeployFlowDefault alloc] init];
     }
     return self;
 }

@@ -14,24 +14,29 @@
 		DF046CE91CDC817B003CA85C /* KCApiPlusTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DF046CE71CDC817B003CA85C /* KCApiPlusTest.m */; };
 		DF095F5D1D127CAF002FD240 /* kerdb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF095F4E1D127C78002FD240 /* kerdb.framework */; };
 		DF095F5E1D127CAF002FD240 /* kerkee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF095F561D127C87002FD240 /* kerkee.framework */; };
-		DF533A181D195784005F0729 /* KCDeployError.h in Headers */ = {isa = PBXBuildFile; fileRef = DF533A161D195784005F0729 /* KCDeployError.h */; };
+		DF533A181D195784005F0729 /* KCDeployError.h in Headers */ = {isa = PBXBuildFile; fileRef = DF533A161D195784005F0729 /* KCDeployError.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF533A191D195784005F0729 /* KCDeployError.m in Sources */ = {isa = PBXBuildFile; fileRef = DF533A171D195784005F0729 /* KCDeployError.m */; };
 		DF582C171D21256C00FA1898 /* KCDownloaderDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = DF582C151D21256C00FA1898 /* KCDownloaderDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DF69A5621D13D7040049C628 /* KCDek.h in Headers */ = {isa = PBXBuildFile; fileRef = DF69A5601D13D7040049C628 /* KCDek.h */; };
+		DF66B3571D30DEE500CE0382 /* KCDek.h in Resources */ = {isa = PBXBuildFile; fileRef = DF69A5601D13D7040049C628 /* KCDek.h */; };
+		DF66B3581D30DEE500CE0382 /* KCDeployError.h in Resources */ = {isa = PBXBuildFile; fileRef = DF533A161D195784005F0729 /* KCDeployError.h */; };
+		DF66B3591D30DEE500CE0382 /* KCDeployFlow.h in Resources */ = {isa = PBXBuildFile; fileRef = DF69A5701D13D9400049C628 /* KCDeployFlow.h */; };
+		DF66B35A1D30DEE500CE0382 /* KCWebApp.h in Resources */ = {isa = PBXBuildFile; fileRef = DF69A5641D13D80F0049C628 /* KCWebApp.h */; };
+		DF66B35B1D30DEE500CE0382 /* KCWebAppManager.h in Resources */ = {isa = PBXBuildFile; fileRef = DF69A57C1D13D99B0049C628 /* KCWebAppManager.h */; };
+		DF69A5621D13D7040049C628 /* KCDek.h in Headers */ = {isa = PBXBuildFile; fileRef = DF69A5601D13D7040049C628 /* KCDek.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF69A5631D13D7040049C628 /* KCDek.m in Sources */ = {isa = PBXBuildFile; fileRef = DF69A5611D13D7040049C628 /* KCDek.m */; };
-		DF69A5661D13D80F0049C628 /* KCWebApp.h in Headers */ = {isa = PBXBuildFile; fileRef = DF69A5641D13D80F0049C628 /* KCWebApp.h */; };
+		DF69A5661D13D80F0049C628 /* KCWebApp.h in Headers */ = {isa = PBXBuildFile; fileRef = DF69A5641D13D80F0049C628 /* KCWebApp.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF69A5671D13D80F0049C628 /* KCWebApp.m in Sources */ = {isa = PBXBuildFile; fileRef = DF69A5651D13D80F0049C628 /* KCWebApp.m */; };
 		DF69A56A1D13D9060049C628 /* KCDeploy.h in Headers */ = {isa = PBXBuildFile; fileRef = DF69A5681D13D9060049C628 /* KCDeploy.h */; };
 		DF69A56B1D13D9060049C628 /* KCDeploy.m in Sources */ = {isa = PBXBuildFile; fileRef = DF69A5691D13D9060049C628 /* KCDeploy.m */; };
 		DF69A56E1D13D91F0049C628 /* KCDeployAssert.h in Headers */ = {isa = PBXBuildFile; fileRef = DF69A56C1D13D91F0049C628 /* KCDeployAssert.h */; };
 		DF69A56F1D13D91F0049C628 /* KCDeployAssert.m in Sources */ = {isa = PBXBuildFile; fileRef = DF69A56D1D13D91F0049C628 /* KCDeployAssert.m */; };
-		DF69A5721D13D9400049C628 /* KCDeployFlow.h in Headers */ = {isa = PBXBuildFile; fileRef = DF69A5701D13D9400049C628 /* KCDeployFlow.h */; };
+		DF69A5721D13D9400049C628 /* KCDeployFlow.h in Headers */ = {isa = PBXBuildFile; fileRef = DF69A5701D13D9400049C628 /* KCDeployFlow.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF69A5731D13D9400049C628 /* KCDeployFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = DF69A5711D13D9400049C628 /* KCDeployFlow.m */; };
 		DF69A5761D13D95D0049C628 /* KCDeployFlowDefault.h in Headers */ = {isa = PBXBuildFile; fileRef = DF69A5741D13D95D0049C628 /* KCDeployFlowDefault.h */; };
 		DF69A5771D13D95D0049C628 /* KCDeployFlowDefault.m in Sources */ = {isa = PBXBuildFile; fileRef = DF69A5751D13D95D0049C628 /* KCDeployFlowDefault.m */; };
 		DF69A57A1D13D9730049C628 /* KCDeployInstall.h in Headers */ = {isa = PBXBuildFile; fileRef = DF69A5781D13D9730049C628 /* KCDeployInstall.h */; };
 		DF69A57B1D13D9730049C628 /* KCDeployInstall.m in Sources */ = {isa = PBXBuildFile; fileRef = DF69A5791D13D9730049C628 /* KCDeployInstall.m */; };
-		DF69A57E1D13D99B0049C628 /* KCWebAppManager.h in Headers */ = {isa = PBXBuildFile; fileRef = DF69A57C1D13D99B0049C628 /* KCWebAppManager.h */; };
+		DF69A57E1D13D99B0049C628 /* KCWebAppManager.h in Headers */ = {isa = PBXBuildFile; fileRef = DF69A57C1D13D99B0049C628 /* KCWebAppManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF69A57F1D13D99B0049C628 /* KCWebAppManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DF69A57D1D13D99B0049C628 /* KCWebAppManager.m */; };
 		DF8753C71D226355007CC9B6 /* KCDownloadEngine.h in Resources */ = {isa = PBXBuildFile; fileRef = DFE2903A1D1BED7B005F0F52 /* KCDownloadEngine.h */; };
 		DF8753C81D226355007CC9B6 /* KCDownloader.h in Resources */ = {isa = PBXBuildFile; fileRef = DFE2903C1D1BED7B005F0F52 /* KCDownloader.h */; };
@@ -311,18 +316,18 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF533A181D195784005F0729 /* KCDeployError.h in Headers */,
 				DFE2903E1D1BED7B005F0F52 /* KCDownloadEngine.h in Headers */,
 				DFE290401D1BED7B005F0F52 /* KCDownloader.h in Headers */,
 				DF582C171D21256C00FA1898 /* KCDownloaderDelegate.h in Headers */,
-				DF69A5621D13D7040049C628 /* KCDek.h in Headers */,
 				DF69A57E1D13D99B0049C628 /* KCWebAppManager.h in Headers */,
+				DF69A5621D13D7040049C628 /* KCDek.h in Headers */,
+				DF533A181D195784005F0729 /* KCDeployError.h in Headers */,
+				DF69A5721D13D9400049C628 /* KCDeployFlow.h in Headers */,
 				DF69A5661D13D80F0049C628 /* KCWebApp.h in Headers */,
+				DF69A5761D13D95D0049C628 /* KCDeployFlowDefault.h in Headers */,
 				DF046CE81CDC817B003CA85C /* KCApiPlusTest.h in Headers */,
 				DF69A57A1D13D9730049C628 /* KCDeployInstall.h in Headers */,
-				DF69A5761D13D95D0049C628 /* KCDeployFlowDefault.h in Headers */,
 				DF69A56A1D13D9060049C628 /* KCDeploy.h in Headers */,
-				DF69A5721D13D9400049C628 /* KCDeployFlow.h in Headers */,
 				DF945BCE1D2CDDDA00E8FF20 /* KCUtilVersion.h in Headers */,
 				DF046CB11CDC4E96003CA85C /* kerkeePlus.h in Headers */,
 				DF69A56E1D13D91F0049C628 /* KCDeployAssert.h in Headers */,
@@ -470,6 +475,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF66B3571D30DEE500CE0382 /* KCDek.h in Resources */,
+				DF66B3581D30DEE500CE0382 /* KCDeployError.h in Resources */,
+				DF66B3591D30DEE500CE0382 /* KCDeployFlow.h in Resources */,
+				DF66B35A1D30DEE500CE0382 /* KCWebApp.h in Resources */,
+				DF66B35B1D30DEE500CE0382 /* KCWebAppManager.h in Resources */,
 				DF8753C71D226355007CC9B6 /* KCDownloadEngine.h in Resources */,
 				DF8753C81D226355007CC9B6 /* KCDownloader.h in Resources */,
 				DF8753C91D226355007CC9B6 /* KCDownloaderDelegate.h in Resources */,
