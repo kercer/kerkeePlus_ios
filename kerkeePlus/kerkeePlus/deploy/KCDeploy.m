@@ -66,7 +66,7 @@
     if ([aSrcFile exists])
     {
         KCFile* tmpZipFile = nil;
-        if ([m_deployFlow respondsToSelector:@selector(decodeFile:dek:)])
+        if (m_deployFlow && [m_deployFlow respondsToSelector:@selector(decodeFile:dek:)])
         {
             tmpZipFile = [m_deployFlow decodeFile:aSrcFile dek:aDek];
         }
@@ -81,24 +81,24 @@
             if (!isSuccess)
             {
                 [dirDek remove];
-                if ([m_deployFlow respondsToSelector:@selector(onDeployError:dek:)])
+                if (m_deployFlow && [m_deployFlow respondsToSelector:@selector(onDeployError:dek:)])
                     [m_deployFlow onDeployError:[[KCDeployError alloc] init] dek:aDek];
                 return false;
             }
             
-            if ([m_deployFlow respondsToSelector:@selector(onComplete:)])
+            if (m_deployFlow && [m_deployFlow respondsToSelector:@selector(onComplete:)])
             {
                [m_deployFlow onComplete:aDek];
             }
             
             return true;
         }
-        if ([m_deployFlow respondsToSelector:@selector(onDeployError:dek:)])
+        if (m_deployFlow && [m_deployFlow respondsToSelector:@selector(onDeployError:dek:)])
             [m_deployFlow onDeployError:[[KCDeployError alloc] init] dek:aDek];
     }
     else
     {
-        if ([m_deployFlow respondsToSelector:@selector(onDeployError:dek:)])
+        if (m_deployFlow && [m_deployFlow respondsToSelector:@selector(onDeployError:dek:)])
             [m_deployFlow onDeployError:[[KCDeployError alloc] init] dek:aDek];
     }
     
@@ -108,7 +108,7 @@
 
 - (void)notifyDeployError:(KCDeployError*)aError dek:(KCDek*)aDek
 {
-    if ([m_deployFlow respondsToSelector:@selector(onDeployError:dek:)])
+    if (m_deployFlow && [m_deployFlow respondsToSelector:@selector(onDeployError:dek:)])
         [m_deployFlow onDeployError:aError dek:aDek];
 }
 

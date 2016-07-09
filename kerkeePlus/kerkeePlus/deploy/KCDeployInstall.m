@@ -43,6 +43,7 @@
 @end
 
 @implementation KCDeployInstall
+@synthesize mManifestFileName = m_manifestFileName;
 
 
 - (instancetype)initWithDeploy:(KCDeploy*)aDeploy
@@ -115,7 +116,7 @@
         }
         error:^(NSError *aError)
         {
-            if ([m_deploy.mDeployFlow respondsToSelector:@selector(onDeployError:dek:)])
+            if (m_deploy.mDeployFlow && [m_deploy.mDeployFlow respondsToSelector:@selector(onDeployError:dek:)])
                 [m_deploy.mDeployFlow onDeployError:(KCDeployError*)aError dek:aDek];
         }
         complete:^(BOOL aIsComplete, KCFile *aFilePath)
@@ -151,6 +152,11 @@
     }
     
     return canInstall;
+}
+
+- (void)setManifestFileName:(NSString*)aManifestFileName
+{
+    m_manifestFileName = aManifestFileName;
 }
 
 @end

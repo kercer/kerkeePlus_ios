@@ -7,7 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "KCDeployFlow.h"
 
 @interface KCWebAppManager : NSObject
+
+- (instancetype)initWithDeployFlow:(id<KCDeployFlow>)aDeployFlow;
+- (instancetype)initWithDeployFlow:(id<KCDeployFlow>)aDeployFlow assetFileName:(NSString*)aAssetFileName;
+
+- (void)setManifestFileName:(NSString*)aManifestFileName;
 
 @end

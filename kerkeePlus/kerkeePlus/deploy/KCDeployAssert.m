@@ -13,8 +13,6 @@
 #import <KCFileManager.h>
 #import <KCTaskQueue.h>
 
-#define kDefaultAssetFileName @"html.dek"
-
 
 @interface KCDek ()
 {

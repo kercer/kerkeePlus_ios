@@ -77,7 +77,10 @@
     m_tag = nil;
 }
 
-
++ (KCWebApp*)webApp:(NSData*)aData
+{
+    return [[[KCWebApp alloc] init] toObject:aData];
+}
 
 - (NSString*)getVersion
 {

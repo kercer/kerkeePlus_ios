@@ -15,4 +15,7 @@
 - (void)installWebApps:(NSArray*)aWebApps;
 - (void)installWebApp:(KCWebApp*)aWebApp;
 
+//the default manifest file name if "cache.manifest"
+@property(nonatomic, strong, setter = setManifestFileName:) NSString* mManifestFileName;
+
 @end

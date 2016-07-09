@@ -25,4 +25,6 @@
 - (NSString*)getVersion;
 
 
++ (KCWebApp*)webApp:(NSData*)aData;
+
 @end

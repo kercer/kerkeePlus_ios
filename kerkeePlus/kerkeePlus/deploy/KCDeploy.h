@@ -17,5 +17,7 @@
 
 - (BOOL)deploy:(KCFile*)aSrcFile dek:(KCDek*)aDek;
 
+- (BOOL)checkHtmlDir;
+
 @property (nonatomic, assign) id<KCDeployFlow> mDeployFlow;
 @end
