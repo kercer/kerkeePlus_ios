@@ -169,7 +169,7 @@
 }
 - (void)onComplete:(KCDek*)aDek
 {
-    
+    //you can refresh page here
 }
 - (void)onDeployError:(KCDeployError*)aError dek:(KCDek*)aDek
 {
