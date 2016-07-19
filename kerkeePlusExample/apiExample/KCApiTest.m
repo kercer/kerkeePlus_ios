@@ -19,7 +19,6 @@
 {
     NSString* jsonInfo = [args getString:@"testInfo"];
     KCLog(@"%@", jsonInfo);
-    
     KCJSCallback* callback = [args getCallback];
     if (callback)
     {
