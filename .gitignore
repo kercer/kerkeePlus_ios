@@ -1,5 +1,6 @@
 ## xcode specific
 *~
+*/Build/*
 build/*
 xcschememanagement.plist
 *.xcscheme
