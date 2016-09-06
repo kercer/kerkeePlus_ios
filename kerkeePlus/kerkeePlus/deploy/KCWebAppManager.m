@@ -70,7 +70,7 @@
     m_deployInstall = nil;
     KCRelease(m_deployAssert);
     m_deployAssert = nil;
-    if (m_db && [m_db isOpen])
+    if (m_db && [m_db isOpened])
     {
         [m_db close];
     }
@@ -150,8 +150,8 @@
 
 - (void)loadWebAppsFromDB
 {
-    KCSnapshot* snapshot = [m_db createSnapshot];
-    KCIterator* iterator = [m_db iterator];
+    KCSnapshot* snapshot = [m_db createDBSnapshot];
+    KCIterator* iterator = [m_db iteratorDB];
     for ([iterator seekToFirst]; [iterator isValid]; [iterator next])
     {
         KCBytes bytes = [iterator getValue];
