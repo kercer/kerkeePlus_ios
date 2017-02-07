@@ -11,10 +11,10 @@
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "E8FED680-CEDC-48FF-B552-A0D1C78855A7",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "3531583E0927593037E4BF93694C98C80D5F879E" : "kerkeeplus\/kerkeePlus\/kerkee\/",
-    "961F45BE4B02290FD31CACEDE4E73C8FCD77EAE0" : "kerkeeplus\/",
+    "3531583E0927593037E4BF93694C98C80D5F879E" : "kerkeePlus_ios\/kerkeePlus\/kerkee\/",
+    "961F45BE4B02290FD31CACEDE4E73C8FCD77EAE0" : "kerkeePlus_ios\/",
     "65C384D290FF993218CF9D6C003C3FB3E09833EE" : "",
-    "29E359E1CBD9CC90A2BAEA3B296407872B0A957E" : "kerkeeplus\/kerkeePlus\/kerdb\/"
+    "29E359E1CBD9CC90A2BAEA3B296407872B0A957E" : "kerkeePlus_ios\/kerkeePlus\/kerdb\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "kerkeePlus",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
