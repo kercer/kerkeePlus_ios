@@ -15,7 +15,7 @@
 
 - (id)initWithID:(int)aID rootPath:(KCFile*)aRootPath manifestUri:(KCURI*)aManifestUri;
 
-//If ID = 0, that means the Webapp that contains all of the Webapps, and these all webapps in a file
+//If ID = 0, that means the KCWebapp that contains all of the Webapps, and these all webapps in a Dek file
 @property (nonatomic, readonly, assign) int mID;
 //webapp's root manifest url
 @property (nonatomic, readonly, strong) KCURI* mManifestURI;
