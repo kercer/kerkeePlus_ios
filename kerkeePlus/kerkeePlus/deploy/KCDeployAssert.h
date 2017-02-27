@@ -10,10 +10,10 @@
 #import "KCDeploy.h"
 
 
-#define kDefaultAssetFileName @"html.dek"
+#define kDefaultAssetFileName @"main.dek"
 @interface KCDeployAssert : NSObject
 
-//default asset file name is "html.dek";
+//default asset file name is "main.dek";
 @property (nonatomic, copy) NSString* mAssetFileName;
 
 - (instancetype)initWithDeploy:(KCDeploy*)aDeploy;
