@@ -17,7 +17,11 @@ FOUNDATION_EXPORT const unsigned char kerkeePlusVersionString[];
 // In this header, you should import all the public headers of your framework using statements like #import <kerkeePlus/PublicHeader.h>
 
 #import "KCDownloadEngine.h"
+#import "KCDownloader.h"
 #import "KCWebAppManager.h"
 #import "KCDeployFlow.h"
 #import "KCWebApp.h"
 #import "KCDek.h"
+#import "KCDeployError.h"
+#import "KCDownloaderDelegate.h"
+

@@ -9,7 +9,8 @@
 #import <Foundation/Foundation.h>
 
 #import "KCDownloaderDelegate.h"
-#import <KCFile.h>
+
+@class KCFile;
 
 /**
  When a download fails because of an HTTP error, the HTTP status code is transmitted as an `NSNumber` via the provided `NSError` parameter of the corresponding block or delegate method. Access to `error.userInfo[KCDownloadErrorHTTPStatusKey]`
