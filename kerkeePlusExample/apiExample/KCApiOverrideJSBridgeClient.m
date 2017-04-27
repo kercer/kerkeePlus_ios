@@ -9,6 +9,7 @@
 #import "KCApiOverrideJSBridgeClient.h"
 #import "KCBaseDefine.h"
 #import "KCJSBridge.h"
+#import "KCJSCallback.h"
 
 @implementation KCApiOverrideJSBridgeClient
 
@@ -23,12 +24,17 @@
     NSString* jsonInfo = [args getString:@"info"];
     KCLog(@"%@", jsonInfo);
     
+    //callback 方式一
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     [dic setObject:@"OK!" forKey:@"info"];
     NSString *json = [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:dic options:0 error:nil] encoding:NSUTF8StringEncoding];
     KCAutorelease(json);
     //回调
     [KCJSBridge callbackJS:aWebView callBackID:[args getObject:@"callbackId"] jsonString:json];
+    
+    //callback 方式二
+    KCJSCallback* callback = [args getCallback];
+    [callback callbackJS:aWebView jsonString:json];
     
 }
 
