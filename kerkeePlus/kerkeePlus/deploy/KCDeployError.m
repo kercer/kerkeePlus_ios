@@ -10,4 +10,11 @@
 
 @implementation KCDeployError
 
+-(id)init
+{
+    if (self = [super initWithDomain:@"depley" code:-1 userInfo:[NSDictionary dictionaryWithObject:@"deploy error"                                                                      forKey:NSLocalizedDescriptionKey]])
+    {
+    }
+    return self;
+}
 @end
