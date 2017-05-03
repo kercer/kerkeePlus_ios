@@ -12,7 +12,7 @@
 
 -(id)init
 {
-    if (self = [super initWithDomain:@"depley" code:-1 userInfo:[NSDictionary dictionaryWithObject:@"deploy error"                                                                      forKey:NSLocalizedDescriptionKey]])
+    if (self = [super initWithDomain:@"deploy" code:-1 userInfo:[NSDictionary dictionaryWithObject:@"deploy error"                                                                      forKey:NSLocalizedDescriptionKey]])
     {
     }
     return self;
