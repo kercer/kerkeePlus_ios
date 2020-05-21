@@ -5,12 +5,12 @@ Pod::Spec.new do |spec|
   spec.version      = "1.0.0"
   spec.summary      = "A short description of kerkeePlus."
   spec.description  = "kerkee的加强版，dek的部署封装"
-  spec.homepage     = "http://wiki.ops.yangege.cn/pages/viewpage.action?pageId=12237479"
+  spec.homepage     = "http://www.kerkee.com"
   spec.license      = "GNU"
-  spec.author             = { "hongzhong" => "hongzhong@gegejia.com" }
+  spec.author             = { "zihong" => "zihong87@gmail.com" }
   spec.social_media_url   = "http://www.kerkee.com"
   spec.platform     = :ios, "8.0"
-  spec.source       = { :git => "https://github.com/boo1111/kerkeePlus_ios", :tag => "#{spec.version}", :submodules => true }#你的仓库地址，不能用SSH地址
+  spec.source       = { :git => "https://github.com/kercer/kerkeePlus_ios.git", :tag => "#{spec.version}", :submodules => true }#你的仓库地址，不能用SSH地址
   spec.source_files  = "kerkeePlus/**/*.{h,m}"
   spec.public_header_files = "kerkeePlus/**/*.h"
   spec.vendored_frameworks = "dependencies/*.framework"
