@@ -1,0 +1,6 @@
+framework module kerzip {
+  umbrella header "kerzip.h"
+
+  export *
+  module * { export * }
+}

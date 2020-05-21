@@ -1,0 +1,6 @@
+framework module kerdb {
+  umbrella header "kerdb.h"
+
+  export *
+  module * { export * }
+}

@@ -1,6 +1,0 @@
-[submodule "kerkeePlus/kerkee"]
-	path = kerkeePlus/kerkee
-	url = https://github.com/kercer/kerkee_ios.git
-[submodule "kerkeePlus/kerdb"]
-	path = kerkeePlus/kerdb
-	url = https://github.com/kercer/kerdb.git
