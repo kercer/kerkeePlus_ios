@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "KCDeploy.h"
-#import "KCWebApp.h"
+
 
 #define kDefaultAssetFileName @"main.dek"
 @interface KCDeployAssert : NSObject
@@ -17,6 +17,6 @@
 @property (nonatomic, copy) NSString* mAssetFileName;
 
 - (instancetype)initWithDeploy:(KCDeploy*)aDeploy;
-- (BOOL)deployFromWebApp:(KCWebApp*)aWebApp;
 - (BOOL)deployFromAssert;
+
 @end

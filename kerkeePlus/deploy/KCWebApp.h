@@ -18,7 +18,7 @@
 @property (nonatomic, readonly, assign) int mID;
 //webapp's root manifest url
 @property (nonatomic, readonly, strong) KCURI* mManifestURI;
-@property (nonatomic, strong) KCFile* mRootPath;
+@property (nonatomic, readonly, strong) KCFile* mRootPath;
 @property (nonatomic, strong)id mTag;
 
 - (NSString*)getVersion;

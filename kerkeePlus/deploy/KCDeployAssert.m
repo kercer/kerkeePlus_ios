@@ -17,8 +17,6 @@
 @interface KCDek ()
 {
 }
-- (void)setWebApp:(KCWebApp*)aWebApp;
-
 - (void)setIsFromAssert:(BOOL)aIsFromAssert;
 
 @end
@@ -77,24 +75,6 @@
     [srcFile remove];
     BACKGROUND_GLOBAL_COMMIT
     
-    return isOK;
-}
-
-- (BOOL)deployFromWebApp:(KCWebApp*)aWebApp
-{
-    
-    KCFile* srcFile = [self copyAssetDekFile];
-    KCFile* htmlDir = [[KCFile alloc] initWithPath:[m_deploy getResRootPath]];
-    KCDek* dek = [[KCDek alloc] initWithRootPath:htmlDir];
-    [dek setWebApp:aWebApp];
-    [dek setIsFromAssert:true];
-    BOOL isOK = [m_deploy deploy:srcFile dek:dek];
-       
-    //if copy zip to document, delete srcFile here
-    BACKGROUND_GLOBAL_BEGIN(PRIORITY_DEFAULT)
-    [srcFile remove];
-    BACKGROUND_GLOBAL_COMMIT
-       
     return isOK;
 }
 
