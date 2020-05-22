@@ -2,7 +2,7 @@
 Pod::Spec.new do |spec|
  
   spec.name         = "kerkeePlus"
-  spec.version      = "0.1.0"
+  spec.version      = "0.1.1"
   spec.summary      = "A short description of kerkeePlus."
   spec.description  = "kerkee的加强版，dek的部署封装"
   spec.homepage     = "http://www.kerkee.com"
@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   spec.public_header_files = "kerkeePlus/**/*.h"
   spec.vendored_frameworks = "dependencies/*.framework"
   spec.dependency 'SSKeychain','~> 1.2.3'
-  spec.dependency 'kerkee','~> 1.1.0'
+  spec.dependency 'kerkee','~> 1.1.1'
   spec.requires_arc = true
 
   # spec.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
