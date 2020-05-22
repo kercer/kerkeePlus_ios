@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   spec.public_header_files = "kerkeePlus/**/*.h"
   spec.vendored_frameworks = "dependencies/*.framework"
   spec.dependency 'SSKeychain','~> 1.2.3'
-  spec.dependency 'kerkee','~> 1.1.1'
+  spec.dependency 'kerkee','~> 1.2.1'
   spec.requires_arc = true
 
   # spec.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
