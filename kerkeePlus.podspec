@@ -10,8 +10,8 @@ Pod::Spec.new do |spec|
   spec.author             = { "zihong" => "zihong87@gmail.com" }
   spec.social_media_url   = "http://www.kerkee.com"
   spec.platform     = :ios, "8.0"
-  s.source       = { :git => "/Users/zihong/Desktop/workspace/kercer/kerkeePlus_ios", :tag => "v1.0.1" }
-  #spec.source       = { :git => "https://github.com/kercer/kerkeePlus_ios.git", :tag => "#{spec.version}", :submodules => true }#你的仓库地址，不能用SSH地址
+  #spec.source       = { :git => "/Users/zihong/Desktop/workspace/kercer/kerkeePlus_ios", :tag => "v1.0.1" }
+  spec.source       = { :git => "https://github.com/kercer/kerkeePlus_ios.git", :tag => "#{spec.version}", :submodules => true }#你的仓库地址，不能用SSH地址
   spec.source_files  = "kerkeePlus/**/*.{h,m}"
   spec.public_header_files = "kerkeePlus/**/*.h"
   spec.vendored_frameworks = "dependencies/*.framework"
