@@ -15,7 +15,6 @@
 		DF046CE91CDC817B003CA85C /* KCApiPlusTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DF046CE71CDC817B003CA85C /* KCApiPlusTest.m */; };
 		DF1F942D22942DC900CD01E0 /* kerzip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF1F942B22942DC900CD01E0 /* kerzip.framework */; };
 		DF1F942E22942DC900CD01E0 /* kerdb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF1F942C22942DC900CD01E0 /* kerdb.framework */; };
-		DF1F943022942DF100CD01E0 /* kerkeePlus.podspec in Resources */ = {isa = PBXBuildFile; fileRef = DF1F942F22942DF100CD01E0 /* kerkeePlus.podspec */; };
 		DF533A181D195784005F0729 /* KCDeployError.h in Headers */ = {isa = PBXBuildFile; fileRef = DF533A161D195784005F0729 /* KCDeployError.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF533A191D195784005F0729 /* KCDeployError.m in Sources */ = {isa = PBXBuildFile; fileRef = DF533A171D195784005F0729 /* KCDeployError.m */; };
 		DF582C171D21256C00FA1898 /* KCDownloaderDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = DF582C151D21256C00FA1898 /* KCDownloaderDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -400,7 +399,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF1F943022942DF100CD01E0 /* kerkeePlus.podspec in Resources */,
 				DF66B3571D30DEE500CE0382 /* KCDek.h in Resources */,
 				DF66B3581D30DEE500CE0382 /* KCDeployError.h in Resources */,
 				DF66B3591D30DEE500CE0382 /* KCDeployFlow.h in Resources */,
